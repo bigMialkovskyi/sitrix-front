@@ -1,0 +1,28 @@
+@import 'default_styles.scss';
+@import 'variables.scss';
+
+footer {
+  background-color: $Blue;
+  height: 80px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  margin-top: -7px;
+}
+
+.logo-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px
+}
+
+.copyright {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    margin: 10px;
+  }
+}

@@ -1,0 +1,149 @@
+@import 'default_styles.scss';
+@import 'variables.scss';
+
+.our-products {
+  // background-color: #191970;
+  background-color: #00bfff;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  padding: 0;
+  // box-shadow: 0 -10px 20px -5px rgba(64, 255, 0, 0.5);
+}
+
+.product-type-container {
+  // margin-top: -7px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  padding: 0px 9.375%;
+  // box-shadow: 0 -10px 20px -5px rgba(64, 255, 0, 0.5);
+  box-shadow: 0px -34px 34px rgba(0, 0, 255, 0.1) inset;
+  border-top: 3px solid rgb(64, 255, 0, 0.5);
+  // box-shadow:
+  //      inset 0 -3em 3em rgba(0,0,0,0.1),
+  //            0 0  0 2px rgb(64, 255, 0),
+  //            0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+// .for-farmers {
+//   background-color: green;
+// }
+
+// .measuring-devices {
+//   background-color: grey;
+// }
+
+// .other {
+//   background-color: blue;
+// }
+
+.product-img-container {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background: radial-gradient(rgb(0, 0, 205) 10px, #191970 220px);
+}
+
+.products {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  // margin-top: 40px;
+
+  img {
+    position: relative;
+    z-index: 2;
+    max-width: 350px;
+    max-height: 250px;
+  }
+}
+
+.about-product {
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 35%;
+}
+
+.product-desc {
+  @include text-2;
+  color: $White;
+  border-bottom: rgb(64, 255, 0) 2px dashed;
+  margin: 20px 0;
+}
+
+.product-element {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-name {
+  @include h3();
+  color: $White;
+  border-bottom: #FFF 2px dashed;
+}
+
+.product-features {
+  margin-top: 10px;
+
+  li {
+    list-style: inside;
+    @include text-2;
+    color: $White
+  }
+}
+
+.products-title {
+  text-transform: uppercase;
+  @include h1;
+  color: $White;
+  padding: 20px 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.group-type-title {
+  text-transform: uppercase;
+  @include h2;
+  color: $White;
+  position: relative;
+  z-index: 1;
+  font-stretch: ultra-expanded;
+
+}
+
+.group-type-box {
+  padding: 40px 0;
+}
+
+/*responcive*/
+
+@media screen and (max-width: 575px) {
+  .products-title {
+    @include h3;
+  }
+
+  .product-element {
+    display: block;
+    padding-bottom: 40px;
+  }
+
+  .product-img-container {
+    width: 100%;
+    height: 100%;
+    // background: radial-gradient(rgb(0, 0, 205) 10px, #191970 175px);
+  }
+
+  .about-product {
+    width: 100%;
+  }
+
+  .products {
+    img {
+      max-width: 50%;
+      max-height: 50%;
+    }
+  }
+}

@@ -1,18 +1,34 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div id="app">
+    <component :is="layout">
+      <router-view />
+    </component>
+  </div>
 </template>
 
+<script>
+import Header from "@/components/Header.vue";
+import defaultLayout from "@/layouts/default.vue";
+
+export default {
+  components: {
+    Header,
+    defaultLayout,
+  },
+  computed: {
+    layout: () => {
+      return "defaultLayout";
+    },
+  },
+};
+</script>
+
 <style lang="scss">
+@import "./styles/default_styles.scss";
+@import "./styles/variables.scss";
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  height: 100vh;
 }
 
 nav {
