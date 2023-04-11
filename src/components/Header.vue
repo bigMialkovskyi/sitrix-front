@@ -1,21 +1,25 @@
 <template>
   <header class="header">
     <div class="container">
-      <router-link to="/">
+      <router-link @click="showNav()" to="/">
         <div class="logo">
           <img class="logo-img" src="../assets/img/logo.png" alt="logo" />
-          <!-- <p class="logo-text">SnT<span> Electronics</span></p> -->
           <p class="logo-text"><span class="logo-print">SITRIX</span></p>
         </div>
       </router-link>
+      <div class="header-content">
       <a
         @click="showMobileMenu = !showMobileMenu"
-        class="menu-hamburger"
+        class="menu-hamburger header-content-elem"
         href="#"
       >
         <img src="../assets/img/menu-hambuger.svg" alt="menu-hamburger" />
       </a>
-      <ul class="header-menu" :class="{ active: showMobileMenu }">
+      <ul
+        v-if="navigationMenu"
+        class="header-menu"
+        :class="{ active: showMobileMenu }"
+      >
         <li class="down">
           <a href="#our-products">Наша продукція</a>
           <ul class="submenu">
@@ -57,14 +61,24 @@
           </ul>
         </li>
       </ul>
-      <router-link v-if="!isLoggedIn" class="user-page-icon-box" to="/login">
+      <router-link
+        @click="hideNav()"
+        v-if="!isLoggedIn"
+        class="user-page-icon-box"
+        to="/login"
+      >
         <img
           class="user-page-icon"
           src="../assets/img/person-no-login.svg"
           alt="person icon"
         />
       </router-link>
-      <router-link v-if="isLoggedIn" class="user-page-icon-box" to="/user-page">
+      <router-link
+        @click="hideNav()"
+        v-if="isLoggedIn"
+        class="user-page-icon-box"
+        to="/user-page"
+      >
         <img
           class="user-page-icon"
           src="../assets/img/person-logined.svg"
@@ -78,6 +92,7 @@
           alt="person icon"
         />
       </span>
+      </div>
     </div>
   </header>
 </template>
@@ -93,12 +108,24 @@ export default {
   data: function () {
     return {
       showMobileMenu: false,
+      navigationMenu: this.$store.getters.StateShowNavigation,
     };
   },
+
+  mounted() {},
+
   methods: {
     async logout() {
       await this.$store.dispatch("LogOut");
       this.$router.push("/login");
+    },
+    hideNav() {
+      this.$store.commit("hideNavigation");
+      this.navigationMenu = this.$store.getters.StateShowNavigation
+    },
+    showNav() {
+      this.$store.commit("showNavigation");
+      this.navigationMenu = this.$store.getters.StateShowNavigation 
     },
   },
 };
@@ -109,9 +136,13 @@ export default {
 @import "../styles/header.scss";
 @import "../styles/menu-hamburger.scss";
 
-.logo-print{
+.logo-print {
   margin-right: 0.5vh;
   margin-left: -1.25vh;
+}
+
+.header-content > * {
+  margin: 0 2vh 0 2vh;
 }
 
 .active {
