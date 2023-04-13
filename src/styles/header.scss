@@ -8,6 +8,7 @@
     background-color: #00BFFF;
     height: 60px;
     border-radius: 5px;
+    @include flex();
   }
 
   .logo-img {
@@ -30,10 +31,15 @@
     @include text();
   }
 
-  div {
+  .container {
     height: 100%;
-    @include flex();
+    display: flex;
+    align-items: center;
     justify-content: space-between;
+  }
+
+  .header-content {
+    display: flex;
   }
 }
 
@@ -56,9 +62,11 @@
 
       &:hover {
         background-color: $Blue;
+        transition: .5s;
 
         a {
           color: $White;
+          transition: .5s;
         }
       }
     }
@@ -111,7 +119,10 @@
     z-index: 4;
     top: 100%;
     left: 50%;
-    height: 150px;
+    // height: 150px;
+    // border-bottom: 2px solid rgb(64, 255, 0, 0.5);
+    border-bottom: 3px solid rgb(0, 191, 255, 0.5);
+    border-top: 3px solid rgb(0, 191, 255, 0.5);
     width: 300px;
     padding-left: 20px;
     box-shadow: 0 0 30px rgba(0, 0, 0, .2);
@@ -151,7 +162,7 @@
 
     .submenu {
       width: 210px;
-      height: 110px;
+      // height: 110px;
 
       li {
         width: 100%;
@@ -217,11 +228,9 @@
 /*responcive*/
 
 @media screen and (min-width: 1440px) {
-
   .header {
     padding: 0.5% 5%;
   }
-
 }
 
 @media screen and (max-width: 575px) {
@@ -230,7 +239,16 @@
   }
 }
 
+@media screen and (mim-width: 992px) {
+  .header-content {
+    align-items: center;
+  }
+}
+
 @media screen and (max-width: 991px) {
+  .header-content {
+    align-items: start;
+  }
 
   .submenu {
     display: none;
@@ -241,15 +259,17 @@
     .logo {
       margin-right: auto;
       justify-content: start;
-      width: 200px;
     }
 
     .container {
-      display: grid;
-      grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
-      grid-template-rows: auto auto;
-      justify-content: space-between;
+      align-items: start;
     }
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: right;
+    align-items: start;
   }
 
   .header-menu {
@@ -278,21 +298,22 @@
   .menu-hamburger {
     margin-left: auto;
     grid-column-start: 8;
+    grid-row-start: 1;
   }
 
   .user-page-icon-box {
+    grid-row-start: 1;
     grid-column-start: 9;
   }
 
   .log-out-icon-box {
+    grid-row-start: 1;
     grid-column-start: 10;
   }
 }
 
 @media screen and (max-width: 575px) {
-
   .logo {
     max-width: 55px;
   }
-
 }

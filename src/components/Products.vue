@@ -16,9 +16,9 @@
           group_type_title="Вимірювальні прилади"
         />
       </div>
-      <div id="other" class="product-type-container other">
+      <!-- <div id="other" class="product-type-container other">
         <ProductList render_product_type="other" group_type_title="Інше" />
-      </div>
+      </div> -->
       <!-- <Hexagon /> -->
     </div>
   </section>

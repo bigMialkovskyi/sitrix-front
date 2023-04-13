@@ -17,36 +17,46 @@
         v-if="showProduct"
       ></p>
     </div>
-    <ul class="product-list" v-if="showProduct">
-      <li class="product-element" v-for="product in products" :key="product.id">
-        <div
-          class="product-img-container"
-          v-if="product.product_type == render_product_type"
+    <transition name="fade">
+      <ul class="product-list" v-if="showProduct">
+        <li
+          class="product-element"
+          v-for="product in products"
+          :key="product.id"
         >
-          <!-- <img
+          <div
+            class="product-img-container"
+            v-if="product.product_type == render_product_type"
+          >
+            <!-- <img
            :src="`http://localhost:3093/uploads/${product.media.path.split('\\')[2]}`"
             alt="product"
           /> -->
-          <img
+            <!-- <img
             :src="` https://snt-electronics.herokuapp.com/uploads/${
               product.media.path.split('\\')[2] ||
               product.media.path.split('/')[1]
             }`"
             alt="product"
-          />
-        </div>
+          /> -->
+            <img
+              :src="`http://664326-vds-dm.penzyakov.gmhost.pp.ua:3093/${product.media.path}`"
+              alt="product"
+            />
+          </div>
 
-        <div
-          class="about-product"
-          v-if="product.product_type == render_product_type"
-        >
-          <a href="#" class="product-name">{{ product.title }}</a>
-          <p class="product-desc">
-            {{ product.description }}
-          </p>
-        </div>
-      </li>
-    </ul>
+          <div
+            class="about-product"
+            v-if="product.product_type == render_product_type"
+          >
+            <a href="#" class="product-name">{{ product.title }}</a>
+            <p class="product-desc">
+              {{ product.description }}
+            </p>
+          </div>
+        </li>
+      </ul>
+    </transition>
   </div>
 </template>
 
@@ -84,6 +94,16 @@ export default {
 <style scoped lang="scss">
 @import "../styles/variables.scss";
 @import "../styles/products.scss";
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
 
 .direction-box {
   display: flex;

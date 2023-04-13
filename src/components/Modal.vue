@@ -78,13 +78,15 @@ export default {
 
 .modal-title {
   font-size: 30px;
-  color: antiquewhite;
+  color: black;
+  /* color: antiquewhite; */
 }
 
 .modal-text {
   margin-top: 2vh;
   font-size: 16px;
-  color: antiquewhite;
+  color: black;
+  /* color: antiquewhite; */
 }
 
 .nav-btn {
@@ -93,7 +95,8 @@ export default {
   border-radius: 10%;
   border: none;
   background-color: rgb(135, 206, 250);
-  color: aliceblue;
+  color: black;
+  /* color: aliceblue; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -109,8 +112,8 @@ export default {
 
 .red-btn {
   box-shadow: 0px 0px 1vh rgba(0, 0, 255, 0.3);
-  border-top: 3px solid rgb(0, 255, 127, 0.5);
-  border-bottom: 3px solid rgb(0, 255, 127, 0.5);
+  border-top: 3px solid rgb(64, 255, 0, 0.5);
+  border-bottom: 3px solid rgb(64, 255, 0, 0.5);
 }
 
 .nav-box {
