@@ -36,12 +36,22 @@
         </li>
       </ul>
     </div>
+    <!-- <LocaleSwitcher /> -->
+    <HelloI18n />
   </section>
 </template>
 
 <script>
+// import HelloI18n from "./components/HelloI18n.vue";
+import HelloI18n from "@/components/HelloI18n.vue";
+import LocaleSwitcher from "@/components/LocaleSwitcher.vue";
+
 export default {
   name: "GeneralInfo",
+  components: {
+    HelloI18n,
+    LocaleSwitcher,
+  },
   props: {},
   data: function () {
     return {

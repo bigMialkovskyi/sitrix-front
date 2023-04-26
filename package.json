@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "start": "serve ./dist -l 3000 -s",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\"",
+    "start": "serve ./dist -l 3000 -s"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -14,11 +15,13 @@
     "os": "^0.1.2",
     "register-service-worker": "^1.7.2",
     "vue": "^3.2.13",
+    "vue-i18n": "^9.1.0",
     "vue-router": "^4.0.13",
     "vuex": "^4.0.0",
     "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
+    "@intlify/vue-i18n-loader": "^3.0.0",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-pwa": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
@@ -26,6 +29,7 @@
     "@vue/cli-service": "~5.0.0",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
+    "vue-cli-plugin-i18n": "~2.3.2",
     "vue-template-compiler": "^2.6.14"
   },
   "browserslist": [

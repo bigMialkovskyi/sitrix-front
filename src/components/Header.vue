@@ -8,47 +8,48 @@
         </div>
       </router-link>
       <div class="header-content">
-        
         <div class="modal-blok">
-        <a
-          v-if="navigationMenu"
-          @click="showMobileMenu = !showMobileMenu"
-          class="menu-hamburger header-content-elem"
-          href="#"
-        >
-          <img src="../assets/img/menu-hambuger.svg" alt="menu-hamburger" />
-        </a>
-        <ul
-          v-if="navigationMenu"
-          class="header-menu"
-          :class="{ active: showMobileMenu }"
-        >
-          <li class="down">
-            <a href="#our-products">Наша продукція</a>
-            <ul class="submenu">
-              <li>
-                <img src="../assets/img/ear-of-corn.svg" alt="icon" /><a
-                  href="#for_farmers"
-                  >Аграрні розробки</a
-                >
-              </li>
-              <li>
-                <img src="../assets/img/weight-scale.svg" alt="icon" /><a
-                  href="#measuring_device"
-                  >Вимірювальні прилади</a
-                >
-              </li>
-              <!-- <li>
+          <a
+            v-if="navigationMenu"
+            @click="showMobileMenu = !showMobileMenu"
+            class="menu-hamburger header-content-elem"
+            href="#"
+          >
+            <img src="../assets/img/menu-hambuger.svg" alt="menu-hamburger" />
+          </a>
+          <ul
+            v-if="navigationMenu"
+            class="header-menu"
+            :class="{ active: showMobileMenu }"
+          >
+            <li class="down">
+              <a href="#our-products">Наша продукція</a>
+              <ul class="submenu">
+                <li>
+                  <img src="../assets/img/ear-of-corn.svg" alt="icon" /><a
+                    href="#for_farmers"
+                    >Аграрні розробки</a
+                  >
+                </li>
+                <li>
+                  <img src="../assets/img/weight-scale.svg" alt="icon" /><a
+                    href="#measuring_device"
+                    >Вимірювальні прилади</a
+                  >
+                </li>
+                <!-- <li>
               <img src="../assets/img/gear.svg" alt="icon" /><a href="#other"
                 >Інше</a
               >
             </li> -->
-            </ul>
-          </li>
-          <li><a href="#general-info">Про нас</a></li>
-          <li><a href="#contacts">Контакти </a></li>
-        </ul>
+              </ul>
+            </li>
+            <li><a href="#general-info">Про нас</a></li>
+            <li><a href="#contacts">Контакти </a></li>
+          </ul>
         </div>
+
+        <LocaleSwitcher />
 
         <ul class="tel header-menu">
           <li class="down">
@@ -103,8 +104,11 @@
 </template>
 
 <script>
+import LocaleSwitcher from "@/components/LocaleSwitcher.vue";
+
 export default {
   name: "Header",
+  components: { LocaleSwitcher },
   computed: {
     isLoggedIn: function () {
       return this.$store.getters.isAuthenticated;
