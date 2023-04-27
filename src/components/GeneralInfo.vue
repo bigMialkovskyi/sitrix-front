@@ -2,27 +2,14 @@
   <section id="general-info" class="general-info">
     <div class="container">
       <div class="about-us">
-        <h1 class="about-us-title">про нас</h1>
+        <h1 class="about-us-title">{{ $t("about-us.title") }}</h1>
         <div class="about-us-desc">
-          <p class="about-us-text">
-            Наша компанія є взірцем у виробництві електроніки на замовлення. Ми
-            пропонуємо широкий спектр послуг, включаючи проектування, створення
-            прототипів і виробництво електроніки для задоволення конкретних
-            потреб наших клієнтів. Незалежно від того, чи потрібна вам невелика
-            партія спеціально розроблених схем чи велика виробнича партія
-            спеціалізованих електронних компонентів, у нас є досвід і ресурси,
-            щоб надати високоякісні продукти, які точно відповідають вашим
-            вимогам. Наша команда досвідчених інженерів і техніків прагне
-            забезпечити відмінне обслуговування клієнтів і досягти виняткових
-            результатів. Зв’яжіться з нами сьогодні, щоб дізнатися більше про
-            те, як ми можемо допомогти вам із вашими потребами у виробництві
-            електроніки.
-          </p>
+          <p class="about-us-text">{{ $t("about-us.desc") }}</p>
           <img src="../assets/img/PCB-about.jpg" alt="PCB-about" />
         </div>
       </div>
 
-      <h1 class="about-us-title">Ми пропонуємо</h1>
+      <h1 class="about-us-title">{{ $t("about-us.we-offer.title") }}</h1>
       <ul class="we-offer">
         <li class="offer-element" v-for="offer in offers" :key="offer.title">
           <div class="offer-icon-container">
@@ -36,8 +23,6 @@
         </li>
       </ul>
     </div>
-    <!-- <LocaleSwitcher /> -->
-    <HelloI18n />
   </section>
 </template>
 
@@ -58,6 +43,7 @@ export default {
       offers: [
         {
           img_src: "clean-hands.svg",
+          // offer_title: this.$i18n.t('about-us.we-offer.consultation.title'),
           offer_title: "консультація",
           offer_desc:
             "Ми пропонуємо консультацію щодо організації проекту та вибору можливих рішень",

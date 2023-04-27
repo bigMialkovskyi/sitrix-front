@@ -1,4 +1,35 @@
 {
     "title": "Vue 3 i18n",
-    "description": "A Vue i18n next example using vue-i18n-next"
+    "description": "A Vue i18n next example using vue-i18n-next",
+    "header": {
+        "product": "Product",
+        "product-menu": {
+            "for-farmers": "Agricultural developments",
+            "measuring-devices": "Measuring devices"
+        },
+        "about-us": "About us",
+        "contacts": "Contacts"
+    },
+    "banner": {
+        "slogan": "Smart choice of quality electronics",
+        "slogan-desc": "Your wishes are our concerns",
+        "button": "Contact us",
+        "modal": {
+            "name": "Your name",
+            "email": "Your email",
+            "message": "Message",
+            "submit-btn": "Send",
+            "close-btn": "close"
+        }
+    },
+    "about-us": {
+        "title": "about us",
+        "desc": "Our company is a model in the production of electronics to order. We offer a wide range of services including design, prototyping and manufacturing of electronics to meet the specific needs of our customers. Whether you require a small batch of custom designed circuits or a large production batch of specialized electronic components, we have the experience and resources to provide high quality products that meet your exact requirements. Our team of experienced engineers and technicians is committed to providing excellent customer service and achieving exceptional results. Contact us today to learn more about how we can help you with your electronics manufacturing needs.",
+        "we-offer": {
+            "title": "we offer",
+            "consultation": {
+                "title": "consultation"
+            }
+        }
+    }
 }

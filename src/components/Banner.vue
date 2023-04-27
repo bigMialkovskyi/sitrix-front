@@ -3,9 +3,9 @@
     <div class="container">
       <div class="banner-content" v-if="!showModal">
         <!-- <h1 class="slogan">Здоров Василь</h1> -->
-        <h1 class="slogan">Електроніка на замовлення</h1>
-        <h2 class="slogan-desc">Ваші бажання - наші турботи</h2>
-        <a href="#" @click="showModal = true">Зв'яжись з нами</a>
+        <h1 class="slogan">{{ $t("banner.slogan") }}</h1>
+        <h2 class="slogan-desc">{{ $t("banner.slogan-desc") }}</h2>
+        <a href="#" @click="showModal = true">{{ $t("banner.button") }}</a>
       </div>
 
       <div class="modal-container" v-if="showModal" @close="showModal = false">
@@ -15,21 +15,21 @@
           method="post"
           enctype="text/plain"
         >
-          <label>Name</label>
+          <label>{{ $t("banner.modal.name") }}</label>
           <input
             type="text"
             v-model="name"
             name="name"
-            placeholder="Your Name"
+            placeholder="Name"
           />
-          <label>Email</label>
+          <label>{{ $t("banner.modal.email") }}</label>
           <input
             type="email"
             v-model="email"
             name="email"
-            placeholder="Your Email"
+            placeholder="Email"
           />
-          <label>Message</label>
+          <label>{{ $t("banner.modal.message") }}</label>
           <textarea
             name="message"
             v-model="message"
@@ -46,9 +46,10 @@
             </ul>
           </p>
 
-          <input type="submit" value="Send" />
+          <input type="submit" :value="$t('banner.modal.submit-btn')" />
+          <!-- <input type="submit" value="Send" /> -->
         </form>
-        <button class="close-btn" @click="clearErrors">Close</button>
+        <button class="close-btn" @click="clearErrors">{{ $t("banner.modal.close-btn") }}</button>
         <span class="top"></span>
         <span class="right"></span>
         <span class="bottom"></span>
@@ -59,7 +60,20 @@
 </template>
 
 <script>
+import { useI18n } from "vue-i18n";
+
 export default {
+  setup() {
+    const { t } = useI18n({
+      inheritLocale: true,
+      useScope: "local",
+    });
+
+    // Something todo ..
+
+    return { t };
+  },
+
   name: "Banner",
   data() {
     return {
@@ -97,6 +111,14 @@ export default {
   },
 };
 </script>
+
+<i18n>
+{
+  "en": {
+    "hello": "Hello i18n in SFC!"
+  }
+}
+</i18n>
 
 <style scoped lang="scss">
 @import "../styles/variables.scss";

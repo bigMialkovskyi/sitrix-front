@@ -23,29 +23,25 @@
             :class="{ active: showMobileMenu }"
           >
             <li class="down">
-              <a href="#our-products">Наша продукція</a>
+              <!-- <a href="#our-products">Наша продукція</a> -->
+              <a href="#our-products">{{ $t("header.product") }}</a>
               <ul class="submenu">
                 <li>
                   <img src="../assets/img/ear-of-corn.svg" alt="icon" /><a
                     href="#for_farmers"
-                    >Аграрні розробки</a
+                    >{{ $t("header.product-menu.for-farmers") }}</a
                   >
                 </li>
                 <li>
                   <img src="../assets/img/weight-scale.svg" alt="icon" /><a
                     href="#measuring_device"
-                    >Вимірювальні прилади</a
+                    >{{ $t("header.product-menu.measuring-devices") }}</a
                   >
                 </li>
-                <!-- <li>
-              <img src="../assets/img/gear.svg" alt="icon" /><a href="#other"
-                >Інше</a
-              >
-            </li> -->
               </ul>
             </li>
-            <li><a href="#general-info">Про нас</a></li>
-            <li><a href="#contacts">Контакти </a></li>
+            <li><a href="#general-info">{{ $t("header.about-us") }}</a></li>
+            <li><a href="#contacts">{{ $t("header.contacts") }}</a></li>
           </ul>
         </div>
 
@@ -105,8 +101,21 @@
 
 <script>
 import LocaleSwitcher from "@/components/LocaleSwitcher.vue";
+import { defineComponent } from "vue";
+import { useI18n } from "vue-i18n";
 
 export default {
+  setup() {
+    const { t } = useI18n({
+      inheritLocale: true,
+      useScope: "local",
+    });
+
+    // Something todo ..
+
+    return { t };
+  },
+
   name: "Header",
   components: { LocaleSwitcher },
   computed: {
@@ -139,6 +148,14 @@ export default {
   },
 };
 </script>
+
+<i18n>
+{
+  "en": {
+    "hello": "Hello i18n in SFC!"
+  }
+}
+</i18n>
 
 <style scoped lang="scss">
 @import "../styles/variables.scss";
