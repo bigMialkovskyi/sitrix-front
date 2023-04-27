@@ -105,16 +105,16 @@ import { defineComponent } from "vue";
 import { useI18n } from "vue-i18n";
 
 export default {
-  setup() {
-    const { t } = useI18n({
-      inheritLocale: true,
-      useScope: "local",
-    });
+  // setup() {
+  //   const { t } = useI18n({
+  //     inheritLocale: true,
+  //     useScope: "local",
+  //   });
 
-    // Something todo ..
+  //   // Something todo ..
 
-    return { t };
-  },
+  //   return { t };
+  // },
 
   name: "Header",
   components: { LocaleSwitcher },

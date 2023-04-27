@@ -28,7 +28,16 @@
         "we-offer": {
             "title": "we offer",
             "consultation": {
-                "title": "consultation"
+                "title": "consultation",
+                "text": "We offer consultation on the organization of the project and the selection of possible solutions"
+            },
+            "budget-decision": {
+                "title": "budget decision",
+                "text": "Our simple and ergonomic designs will be affordable to everyone"
+            },
+            "support": {
+                "title": "support",
+                "text": "We provide technical support and servicing of our products during operation"
             }
         }
     }

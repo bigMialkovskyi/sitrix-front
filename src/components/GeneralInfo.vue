@@ -18,8 +18,8 @@
               alt="offer-icon"
             />
           </div>
-          <h5>{{ offer.offer_title }}</h5>
-          <p>{{ offer.offer_desc }}</p>
+          <h5>{{ $t(offer.offer_title) }}</h5>
+          <p>{{ $t(offer.offer_desc) }}</p>
         </li>
       </ul>
     </div>
@@ -41,24 +41,39 @@ export default {
   data: function () {
     return {
       offers: [
+        // {
+        //   img_src: "clean-hands.svg",
+        //   // offer_title: this.$root.t('about-us.we-offer.consultation.title'),
+        //   offer_title: "консультація",
+        //   offer_desc:
+        //     "Ми пропонуємо консультацію щодо організації проекту та вибору можливих рішень",
+        // },
+        // {
+        //   img_src: "money-bag.svg",
+        //   offer_title: "бюджетне рішення",
+        //   offer_desc:
+        //     "Наші прості та ергономічні розробки будуть по кишені кожному",
+        // },
+        // {
+        //   img_src: "clean-hands.svg",
+        //   offer_title: "підтримка",
+        //   offer_desc:
+        //     "Ми надаємо тех-підтримку та обсуговування наших товарів під час есплуатації",
+        // },
         {
           img_src: "clean-hands.svg",
-          // offer_title: this.$i18n.t('about-us.we-offer.consultation.title'),
-          offer_title: "консультація",
-          offer_desc:
-            "Ми пропонуємо консультацію щодо організації проекту та вибору можливих рішень",
+          offer_title: "about-us.we-offer.consultation.title",
+          offer_desc: "about-us.we-offer.consultation.text",
         },
         {
           img_src: "money-bag.svg",
-          offer_title: "бюджетне рішення",
-          offer_desc:
-            "Наші прості та ергономічні розробки будуть по кишені кожному",
+          offer_title: "about-us.we-offer.budget-decision.title",
+          offer_desc: "about-us.we-offer.budget-decision.text",
         },
         {
           img_src: "clean-hands.svg",
-          offer_title: "підтримка",
-          offer_desc:
-            "Ми надаємо тех-підтримку та обсуговування наших товарів під час есплуатації",
+          offer_title: "about-us.we-offer.support.title",
+          offer_desc: "about-us.we-offer.support.text",
         },
       ],
     };
