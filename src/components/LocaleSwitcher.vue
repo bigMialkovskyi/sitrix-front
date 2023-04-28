@@ -7,6 +7,7 @@
     />
     <select v-model="$i18n.locale" class="select-element">
       <option
+        class="option"
         v-for="(locale, i) in locales"
         :key="`locale-${i}`"
         :value="locale"

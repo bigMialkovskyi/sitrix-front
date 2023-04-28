@@ -1,15 +1,15 @@
 <template>
   <div class="register">
-    <p>Щоб продовжити вам потрібно зареєструватися</p>
+    <p>{{ $t("registration-page.title") }}</p>
     <div>
       <form class="form" @submit.prevent="submit">
         <div>
-          <label for="username">Ім'я користувача:</label>
+          <label for="username">{{ $t("registration-page.name") }}</label>
           <input type="text" name="username" v-model="form.login" />
         </div>
 
         <div class="pass-box">
-          <label for="password">Пароль:</label>
+          <label for="password">{{ $t("registration-page.pass") }}</label>
           <input
             v-if="!showPassword"
             class="pass-input"
@@ -45,7 +45,7 @@
         </div>
 
         <div class="pass-box">
-          <label for="password">Повторіть свій пароль:</label>
+          <label for="password">{{ $t("registration-page.title-rep") }}</label>
           <input
             v-if="!showPasswordRepeat"
             class="pass-input"
@@ -81,14 +81,13 @@
         </div>
 
         <div>
-          <label for="email">Електронна пошта:</label>
+          <label for="email">{{ $t("registration-page.email") }}</label>
           <input type="email" name="email" v-model="form.email" />
         </div>
 
         <div class="pass-box">
           <label for="sensorID">sensorID:</label>
           <input
-            v-if="!showPasswordRepeat"
             class="pass-input"
             type="text"
             name="sensorID"
@@ -105,21 +104,23 @@
           </button>
         </div>
 
-        <button class="submit-button" type="submit">Підтвердити</button>
+        <button class="submit-button" type="submit">
+          {{ $t("registration-page.submit-btn") }}
+        </button>
       </form>
       <p v-if="showError" id="error">{{ errorMessage }}</p>
       <div class="have-account">
-        <p>Ви вже зареєстровані?</p>
+        <p>{{ $t("registration-page.have-an-account-msg") }}</p>
         <router-link to="/login">
-          <button>Вхід до особистого кабінету</button>
+          <button>{{ $t("registration-page.go-to-register-btn") }}</button>
         </router-link>
       </div>
     </div>
     <Modal
       v-if="showModal"
       @close="showModal = false"
-      :title="modal.title"
-      :text="modal.text"
+        :title="$t('registration-page.modal.title')"
+        :text="$t('registration-page.modal.desc')"
       :imgSrc="modal.imgSrc"
     />
   </div>
@@ -145,8 +146,8 @@ export default {
         sensorID: "",
       },
       modal: {
-        title: "Sensor ID",
-        text: "Унікальний ідентифікатор пристрою (потрібен длятого, щоб впевнититсь що ви являєтесь нашим клієнтом)",
+        // title: "Sensor ID",
+        // text: "Унікальний ідентифікатор пристрою (потрібен длятого, щоб впевнититсь що ви являєтесь нашим клієнтом)",
         imgSrc: modalImg,
       },
       inpPass: "",

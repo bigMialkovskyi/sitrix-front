@@ -1,19 +1,19 @@
 <template>
   <section id="our-products" class="our-products">
     <div class="products">
-      <h1 class="products-title">Замовлення наших клієнтів</h1>
+      <h1 class="products-title">{{ $t("products.title") }}</h1>
       <div class="product-type-container for-farmers">
         <ProductList
           id="for_farmers"
           render_product_type="for_farmers"
-          group_type_title="Розробки для аграріїв"
+          :group_type_title="$t('products.categories.agro')"
         />
       </div>
       <div class="product-type-container measuring-devices">
         <ProductList
           id="measuring_device"
           render_product_type="measuring_device"
-          group_type_title="Вимірювальні прилади"
+          :group_type_title="$t('products.categories.meas')"
         />
       </div>
       <!-- <div id="other" class="product-type-container other">

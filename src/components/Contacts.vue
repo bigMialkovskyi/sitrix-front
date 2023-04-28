@@ -1,10 +1,10 @@
 <template>
   <section id="contacts" class="contacts">
     <div class="container">
-      <h1 class="contacts-title">Зв'яжіться з нами</h1>
+      <h1 class="contacts-title">{{ $t("contacts.title") }}</h1>
       <div class="contacts-info">
         <ul class="contacts-list">
-          <p>Телефонуйте:</p>
+          <p>{{ $t("contacts.tel") }}</p>
           <li>
             <div class="icon-container">
               <img src="../assets/img/phone-call.svg" alt="" />
@@ -17,7 +17,7 @@
             </div>
             <a href="tel:(067) 570 34 89">(067) 570 34 89</a>
           </li>
-          <P>Пошта:</P>
+          <P>{{ $t("contacts.mail") }}</P>
           <li>
             <div class="icon-container">
               <img src="../assets/img/mail.svg" alt="" />
@@ -27,7 +27,7 @@
         </ul>
 
         <ul class="social">
-          <p>Ми в соцмережах:</p>
+          <p>{{ $t("contacts.social") }}</p>
           <li>
             <div class="icon-container">
               <img src="../assets/img/instagram-social.svg" alt="" />
@@ -47,8 +47,8 @@
       <Modal
         v-if="showModal"
         @close="showModal = false"
-        :title="modal.title"
-        :text="modal.text"
+        :title="$t('contacts.modal.title')"
+        :text="$t('contacts.modal.desc')"
         :imgSrc="modal.imgSrc"
       />
     </div>
@@ -69,8 +69,6 @@ export default {
     return {
       showModal: false,
       modal: {
-        title: "Зовсім скоро",
-        text: "Наразі, додаткову інформацію ви можете знайти на нашій сторінці Instagram. Дякуюємо що ви з нами.",
         imgSrc: modalImg,
       },
     };

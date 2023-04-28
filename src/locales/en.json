@@ -40,5 +40,44 @@
                 "text": "We provide technical support and servicing of our products during operation"
             }
         }
+    },
+    "products": {
+        "title": "our products",
+        "categories": {
+            "agro": "Agricultural developments",
+            "meas": "Measuring devices"
+        }
+    },
+    "contacts": {
+        "title": "Contact us",
+        "tel": "Call:",
+        "mail": "Mail:",
+        "social": "Social networks:",
+        "modal": {
+            "title": "Coming soon",
+            "desc": "For now, you can find additional information on our Instagram page. Thank you for being with us."
+        }
+    },
+    "login-page": {
+        "title": "Enter your username and password to login",
+        "name": "User name:",
+        "pass": "Password:",
+        "submit-btn": "Confirm",
+        "not-registered-msg": "Not registered yet?",
+        "go-to-register-btn": "Go to registration!"
+    },
+    "registration-page": {
+        "title": "You need to register to continue",
+        "name": "User name:",
+        "pass": "Password:",
+        "pass-rep": "Repeat the password:",
+        "email": "Email:",
+        "submit-btn": "Confirm",
+        "have-an-account-msg": "Have an account?",
+        "go-to-register-btn": "Login to personal account",
+        "modal": {
+            "title": "Sensor ID",
+            "desc": "Unique device identifier (required to connect your personal account and the device you purchased and set it up)."
+        }
     }
 }

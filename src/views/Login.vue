@@ -1,14 +1,14 @@
 <template>
   <div class="login">
-    <p>Для входу введіть ім'я користувача та пароль</p>
+    <p>{{ $t("login-page.title") }}</p>
     <div>
       <form class="form" @submit.prevent="submit">
         <div>
-          <label for="username">Ім'я користувача:</label>
+          <label for="username">{{ $t("login-page.name") }}</label>
           <input type="text" name="username" v-model="form.login" required />
         </div>
         <div class="pass-box">
-          <label for="password">Пароль:</label>
+          <label for="password">{{ $t("login-page.pass") }}</label>
           <input
             v-if="!showPassword"
             class="pass-input"
@@ -42,13 +42,13 @@
             />
           </button>
         </div>
-        <button class="submit-button" type="submit">Вхід</button>
+        <button class="submit-button" type="submit">{{ $t("login-page.submit-btn") }}</button>
       </form>
       <p v-if="showError" id="error">{{ errorMessage }}</p>
       <div class="have-account">
-        <p>Ви ще не зареєстровані?</p>
+        <p>{{ $t("login-page.not-registered-msg") }}</p>
         <router-link to="/register">
-          <button>Прейти до реєстрації</button>
+          <button>{{ $t("login-page.go-to-register-btn") }}</button>
         </router-link>
       </div>
     </div>

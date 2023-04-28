@@ -27,7 +27,6 @@
 </template>
 
 <script>
-// import HelloI18n from "./components/HelloI18n.vue";
 import HelloI18n from "@/components/HelloI18n.vue";
 import LocaleSwitcher from "@/components/LocaleSwitcher.vue";
 
@@ -41,25 +40,6 @@ export default {
   data: function () {
     return {
       offers: [
-        // {
-        //   img_src: "clean-hands.svg",
-        //   // offer_title: this.$root.t('about-us.we-offer.consultation.title'),
-        //   offer_title: "консультація",
-        //   offer_desc:
-        //     "Ми пропонуємо консультацію щодо організації проекту та вибору можливих рішень",
-        // },
-        // {
-        //   img_src: "money-bag.svg",
-        //   offer_title: "бюджетне рішення",
-        //   offer_desc:
-        //     "Наші прості та ергономічні розробки будуть по кишені кожному",
-        // },
-        // {
-        //   img_src: "clean-hands.svg",
-        //   offer_title: "підтримка",
-        //   offer_desc:
-        //     "Ми надаємо тех-підтримку та обсуговування наших товарів під час есплуатації",
-        // },
         {
           img_src: "clean-hands.svg",
           offer_title: "about-us.we-offer.consultation.title",

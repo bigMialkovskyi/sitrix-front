@@ -2,7 +2,6 @@
   <section class="banner">
     <div class="container">
       <div class="banner-content" v-if="!showModal">
-        <!-- <h1 class="slogan">Здоров Василь</h1> -->
         <h1 class="slogan">{{ $t("banner.slogan") }}</h1>
         <h2 class="slogan-desc">{{ $t("banner.slogan-desc") }}</h2>
         <a href="#" @click="showModal = true">{{ $t("banner.button") }}</a>
@@ -47,7 +46,6 @@
           </p>
 
           <input type="submit" :value="$t('banner.modal.submit-btn')" />
-          <!-- <input type="submit" value="Send" /> -->
         </form>
         <button class="close-btn" @click="clearErrors">{{ $t("banner.modal.close-btn") }}</button>
         <span class="top"></span>
