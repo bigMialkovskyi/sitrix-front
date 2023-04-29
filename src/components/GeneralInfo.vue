@@ -41,7 +41,7 @@ export default {
     return {
       offers: [
         {
-          img_src: "clean-hands.svg",
+          img_src: "support.svg",
           offer_title: "about-us.we-offer.consultation.title",
           offer_desc: "about-us.we-offer.consultation.text",
         },

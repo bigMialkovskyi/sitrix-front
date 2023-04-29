@@ -3,7 +3,7 @@
     <div class="container">
       <h1 class="contacts-title">{{ $t("contacts.title") }}</h1>
       <div class="contacts-info">
-        <ul class="contacts-list">
+        <ul class="contacts-elem">
           <p>{{ $t("contacts.tel") }}</p>
           <li>
             <div class="icon-container">
@@ -17,7 +17,17 @@
             </div>
             <a href="tel:(067) 570 34 89">(067) 570 34 89</a>
           </li>
-          <P>{{ $t("contacts.mail") }}</P>
+          <!-- <p>{{ $t("contacts.mail") }}</p>
+          <li>
+            <div class="icon-container">
+              <img src="../assets/img/mail.svg" alt="" />
+            </div>
+            <a href="">sntelectronx@gmai.com</a>
+          </li> -->
+        </ul>
+
+        <ul class="contacts-elem">
+          <p>{{ $t("contacts.mail") }}</p>
           <li>
             <div class="icon-container">
               <img src="../assets/img/mail.svg" alt="" />
@@ -26,7 +36,7 @@
           </li>
         </ul>
 
-        <ul class="social">
+        <ul class="contacts-elem">
           <p>{{ $t("contacts.social") }}</p>
           <li>
             <div class="icon-container">
@@ -82,12 +92,6 @@ export default {
       }
 
       document.documentElement.style.overflow = "auto";
-      //  <Modal
-      //  @wheel.prevent
-      //  @touchmove.prevent
-      //  @scroll.prevent
-      // />
-      // does not work
     },
   },
 };

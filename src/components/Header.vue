@@ -23,7 +23,6 @@
             :class="{ active: showMobileMenu }"
           >
             <li class="down">
-              <!-- <a href="#our-products">Наша продукція</a> -->
               <a href="#our-products">{{ $t("header.product") }}</a>
               <ul class="submenu">
                 <li>
@@ -190,6 +189,7 @@ export default {
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s;
+  box-shadow: 0px -14px 14px rgba(0, 0, 255, 0.1) inset;
 }
 
 .user-page-icon-box:hover {

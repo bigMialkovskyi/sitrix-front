@@ -26,7 +26,6 @@
         >
           <div
             class="product-img-container"
-            v-if="product.product_type == render_product_type"
           >
             <!-- <img
            :src="`http://localhost:3093/uploads/${product.media.path.split('\\')[2]}`"
@@ -47,12 +46,15 @@
 
           <div
             class="about-product"
-            v-if="product.product_type == render_product_type"
           >
-            <a href="#" class="product-name">{{ product.title }}</a>
-            <p class="product-desc">
-              {{ product.description }}
-            </p>
+            <div class="product-name-container">
+              <a href="#" class="product-name">{{ product.title }}</a>
+            </div>
+            <div class="product-desc-container">
+              <p class="product-desc">
+                {{ product.description }}
+              </p>
+            </div>
           </div>
         </li>
       </ul>
@@ -84,7 +86,9 @@ export default {
   methods: {
     fetchProducts() {
       productApi.fetchAvailableProducts().then((products) => {
-        this.products = products;
+        products.forEach(element => {
+          if(element.product_type == this.render_product_type ) this.products.push(element)
+        });
       });
     },
   },
