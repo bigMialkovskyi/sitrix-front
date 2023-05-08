@@ -25,13 +25,13 @@
 </template>
 
 <script>
-import Hexagon from "@/components/Hexagon.vue";
+// import Hexagon from "@/components/Hexagon.vue";
 import ProductList from "@/components/ProductList.vue";
 
 export default {
   name: "Products",
   components: {
-    Hexagon,
+    // Hexagon,
     ProductList,
   },
 };

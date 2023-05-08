@@ -57,10 +57,15 @@ export default {
 
 .select-element {
   background: rgba(0, 0, 0, 0);
+  border-radius: 10px;
 }
 
 .globe-icon {
   width: 24px;
   height: 24px;
+}
+
+.option {
+  border-radius: 10px;
 }
 </style>
