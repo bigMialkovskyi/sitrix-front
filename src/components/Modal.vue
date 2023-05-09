@@ -127,4 +127,10 @@ export default {
 .modal-img {
   height: 5vh;
 }
+
+@media screen and (max-width: 767px) {
+  .modal-container {
+    height: 120%;
+  }
+}
 </style>

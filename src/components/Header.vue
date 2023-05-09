@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="container">
-      <router-link @click="showNav()" to="/">
+      <router-link to="/">
         <div class="logo">
           <img class="logo-img" src="../assets/img/logo.png" alt="logo" />
           <p class="logo-text"><span class="logo-print">SITRIX</span></p>
@@ -10,7 +10,7 @@
       <div class="header-content">
         <div class="modal-blok">
           <a
-            v-if="navigationMenu"
+            v-if="isShowNavigation"
             @click="showMobileMenu = !showMobileMenu"
             class="menu-hamburger header-content-elem"
             href="#"
@@ -18,7 +18,7 @@
             <img src="../assets/img/menu-hambuger.svg" alt="menu-hamburger" />
           </a>
           <ul
-            v-if="navigationMenu"
+            v-if="isShowNavigation"
             class="header-menu"
             :class="{ active: showMobileMenu }"
           >
@@ -67,31 +67,21 @@
 
         <LocaleSwitcher />
 
-        <router-link
-          @click="hideNav()"
-          v-if="!isLoggedIn"
-          class="user-page-icon-box"
-          to="/login"
-        >
+        <router-link v-if="!isLoggedIn" class="user-page-icon-box" to="/login">
           <img
             class="user-page-icon"
             src="../assets/img/person-no-login.svg"
             alt="person icon"
           />
         </router-link>
-        <router-link
-          @click="hideNav()"
-          v-if="isLoggedIn"
-          class="user-page-icon-box"
-          to="/user-page"
-        >
+        <router-link v-if="isShowProfileBtn" class="user-page-icon-box" to="/user-page">
           <img
             class="user-page-icon"
             src="../assets/img/person-logined.svg"
             alt="person icon"
           />
         </router-link>
-        <span v-if="isLoggedIn" class="log-out-icon-box" @click="logout">
+        <span v-if="isShowLogout" class="log-out-icon-box" @click="logout">
           <img class="user-page-icon" src="../assets/img/log-out.svg" alt="person icon" />
         </span>
       </div>
@@ -105,32 +95,32 @@ import LocaleSwitcher from "@/components/LocaleSwitcher.vue";
 export default {
   name: "Header",
   components: { LocaleSwitcher },
+
+  data: function () {
+    return {
+      showMobileMenu: false,
+    };
+  },
+
   computed: {
     isLoggedIn: function () {
       return this.$store.getters.isAuthenticated;
     },
+    isShowLogout: function () {
+      return this.isLoggedIn && this.$route.name === "UserPage";
+    },
+    isShowProfileBtn: function () {
+      return this.isLoggedIn && this.$route.name !== "UserPage";
+    },
+    isShowNavigation: function () {
+      return this.$route.name === "home";
+    },
   },
-  data: function () {
-    return {
-      showMobileMenu: false,
-      navigationMenu: this.$store.getters.StateShowNavigation,
-    };
-  },
-
-  mounted() {},
 
   methods: {
     async logout() {
       await this.$store.dispatch("LogOut");
       this.$router.push("/login");
-    },
-    hideNav() {
-      this.$store.commit("hideNavigation");
-      this.navigationMenu = this.$store.getters.StateShowNavigation;
-    },
-    showNav() {
-      this.$store.commit("showNavigation");
-      this.navigationMenu = this.$store.getters.StateShowNavigation;
     },
   },
 };

@@ -27,14 +27,17 @@
               <a v-if="locale == 'ua'" href="#" class="product-name">{{
                 product.title
               }}</a>
+
               <a v-if="locale == 'en'" href="#" class="product-name">{{
                 product.title_en
               }}</a>
             </div>
+
             <div v-if="inView" :class="{ after: inView }" class="product-desc-container">
               <p v-if="locale == 'ua'" class="product-desc">
                 {{ product.description }}
               </p>
+
               <p v-if="locale == 'en'" class="product-desc">
                 {{ product.description_en }}
               </p>
@@ -73,23 +76,24 @@ export default {
 
   mounted() {
     const observer = new IntersectionObserver((entries, observer) => {
-      // if (entries[0].isIntersecting) {
-      //   this.inView = true;
-      // }
       entries.forEach((entry) => {
-        // console.log(entry);
         this.inView = true;
-        entry.isIntersecting
-          ? entry.target.classList.add("animate")
-          : entry.target.classList.remove("animate");
+        console.log(entry);
+        if (entry.isIntersecting) {
+          entry?.target?.firstChild?.classList?.add("animate-title");
+          entry?.target?.lastChild?.classList?.add("animate-desc");
+        }
+
+        if (!entry.isIntersecting) {
+          entry?.target?.firstChild?.classList?.remove("animate-title");
+          entry?.target?.lastChild?.classList?.remove("animate-desc");
+        }
       });
     });
 
     setTimeout(() => {
-      // const elements = this.$refs.observerElement
-      // elements.forEach((elem)=>observer.observe(elem))
       this.$refs.observerElement.forEach((elem) => observer.observe(elem));
-    }, 1000);
+    }, 2000);
   },
 
   methods: {
@@ -115,49 +119,41 @@ export default {
 @import "../styles/variables.scss";
 @import "../styles/products.scss";
 
-.animate {
-  animation-name: example;
-  // animation-duration: 1s;
-  // animation-timing-function: ease;
+.animate-desc {
+  animation-name: desc-animation;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
-  animation: example 3s ease-out;
+  animation: desc-animation 2s ease-out;
 }
 
-@keyframes example {
+.animate-title {
+  animation-name: title-animation;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation: title-animation 1s ease-out;
+}
+
+@keyframes desc-animation {
   from {
-    // transform: rotate(0deg);
-    transform: translate(0, 50px);
+    transform: translate(0, 60px);
     opacity: 0;
   }
   to {
-    // transform: rotate(45deg);
     transform: translate(0, 0px);
     opacity: 1;
   }
 }
 
-// .animated-element {
-//   animation: fade-in 2s ease-out;
-//   transform: translate(0, 50px);
-//   transition: 2s;
-//   // transition-duration: 4s;
-//   // transition-delay: 2s;
-// }
-
-// .after {
-//   transform: translate(0, 0px);
-//   // transition: 2s;
-// }
-
-// @keyframes fade-in {
-//   0% {
-//     opacity: 0;
-//   }
-//   100% {
-//     opacity: 1;
-//   }
-// }
+@keyframes title-animation {
+  from {
+    transform: translate(50px, 0px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0px);
+    opacity: 1;
+  }
+}
 
 //////
 
