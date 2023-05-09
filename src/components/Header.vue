@@ -39,12 +39,14 @@
                 </li>
               </ul>
             </li>
-            <li><a href="#general-info">{{ $t("header.about-us") }}</a></li>
-            <li><a href="#contacts">{{ $t("header.contacts") }}</a></li>
+            <li>
+              <a href="#general-info">{{ $t("header.about-us") }}</a>
+            </li>
+            <li>
+              <a href="#contacts">{{ $t("header.contacts") }}</a>
+            </li>
           </ul>
         </div>
-
-        <LocaleSwitcher />
 
         <ul class="tel header-menu">
           <li class="down">
@@ -62,6 +64,9 @@
             </ul>
           </li>
         </ul>
+
+        <LocaleSwitcher />
+
         <router-link
           @click="hideNav()"
           v-if="!isLoggedIn"
@@ -87,11 +92,7 @@
           />
         </router-link>
         <span v-if="isLoggedIn" class="log-out-icon-box" @click="logout">
-          <img
-            class="user-page-icon"
-            src="../assets/img/log-out.svg"
-            alt="person icon"
-          />
+          <img class="user-page-icon" src="../assets/img/log-out.svg" alt="person icon" />
         </span>
       </div>
     </div>

@@ -281,7 +281,7 @@ export default {
   border-radius: 5px;
   // background-color: rgb(0, 191, 255);
   box-shadow: 0px -14px 14px rgba(0, 0, 255, 0.1) inset;
-  border-top: 3px solid rgb(0, 255, 127, 0.5);
+  border-top: 2px solid rgb(0, 255, 127, 0.5);
 }
 
 .sensor-element:hover {
@@ -321,8 +321,8 @@ export default {
   border-radius: 5px;
   background-color: rgb(0, 191, 255);
   box-shadow: 0px 0px 1vh rgba(0, 0, 255, 0.3);
-  border-top: 2px solid rgb(0, 255, 127, 0.5);
-  border-bottom: 2px solid rgb(0, 255, 127, 0.5);
+  border-top: 1px solid rgb(0, 255, 127, 0.5);
+  border-bottom: 1px solid rgb(0, 255, 127, 0.5);
 }
 
 .preview-bar {
