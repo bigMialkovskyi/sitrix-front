@@ -123,7 +123,7 @@ export default {
   animation-name: desc-animation;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
-  animation: desc-animation 2s ease-out;
+  animation: desc-animation 1s ease-out;
 }
 
 .animate-title {
