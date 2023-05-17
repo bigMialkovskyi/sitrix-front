@@ -1,6 +1,7 @@
 <template>
   <section class="banner">
-    <div class="container">
+    <!-- <div class="container"> -->
+    <!-- <div> -->
       <div class="banner-content" v-if="!showModal">
         <h1 class="slogan">{{ $t("banner.slogan") }}</h1>
         <h2 class="slogan-desc">{{ $t("banner.slogan-desc") }}</h2>
@@ -53,7 +54,7 @@
         <span class="bottom"></span>
         <span class="left"></span>
       </div>
-    </div>
+    <!-- </div> -->
   </section>
 </template>
 
@@ -204,11 +205,13 @@ span {
   left: 0;
   width: 0;
   height: 5px;
+    //   rgba(255, 49, 49, 0.5),
+    // rgb(255, 49, 49)
   background: linear-gradient(
     90deg,
     transparent 50%,
-    rgba(255, 49, 49, 0.5),
-    rgb(255, 49, 49)
+    rgb(57, 255, 20),
+    rgba(57, 255, 20, 0.5)
   );
 }
 
@@ -229,11 +232,13 @@ span {
   right: 0;
   width: 5px;
   height: 0;
+    //   rgba(0, 255, 255, 0.5),
+    // rgb(0, 255, 255)
   background: linear-gradient(
     180deg,
     transparent 30%,
-    rgba(0, 255, 255, 0.5),
-    rgb(0, 255, 255)
+    rgb(57, 255, 20),
+    rgba(57, 255, 20, 0.5),
   );
 }
 

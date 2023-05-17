@@ -78,7 +78,6 @@ export default {
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         this.inView = true;
-        console.log(entry);
         if (entry.isIntersecting) {
           entry?.target?.firstChild?.classList?.add("animate-title");
           entry?.target?.lastChild?.classList?.add("animate-desc");
@@ -123,14 +122,14 @@ export default {
   animation-name: desc-animation;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
-  animation: desc-animation 2s ease-out;
+  animation: desc-animation 1.5s ease-out;
 }
 
 .animate-title {
   animation-name: title-animation;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
-  animation: title-animation 1s ease-out;
+  animation: title-animation 1.5s ease-out;
 }
 
 @keyframes desc-animation {
