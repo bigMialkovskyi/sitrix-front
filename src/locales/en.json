@@ -11,7 +11,9 @@
         "contacts": "Contacts"
     },
     "banner": {
+        "letters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
         "slogan": "Smart choice of quality electronics",
+        "slogan-transform": "you are where you need to be!   ",
         "slogan-desc": "Your wishes are our concerns",
         "button": "Contact us",
         "modal": {
