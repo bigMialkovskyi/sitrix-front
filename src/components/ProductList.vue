@@ -1,10 +1,13 @@
 <template>
   <div class="group-type-box">
     <div class="direction-box">
-      <a class="group-type-title unselectable" v-on:click="showProduct = !showProduct">{{
-        group_type_title
-      }}</a>
-      <p
+      <!-- <a
+        class="group-type-title unselectable"
+        v-on:click="showProduct = !showProduct"
+        >{{ group_type_title }}</a
+      > -->
+      <a class="group-type-title unselectable">{{ group_type_title }}</a>
+      <!-- <p
         class="content-down direction-arrow"
         v-on:click="showProduct = !showProduct"
         v-if="!showProduct"
@@ -13,17 +16,25 @@
         class="content-up direction-arrow"
         v-on:click="showProduct = !showProduct"
         v-if="showProduct"
-      ></p>
+      ></p> -->
     </div>
     <transition name="fade">
       <ul class="product-list" v-if="showProduct">
-        <li class="product-element" v-for="product in products" :key="product.id">
+        <li
+          class="product-element"
+          v-for="product in products"
+          :key="product.id"
+        >
           <div class="product-img-container">
             <img :src="productImgURL + `${product.media.path}`" alt="product" />
           </div>
 
           <div ref="observerElement" class="about-product">
-            <div v-if="inView" :class="{ after: inView }" class="product-name-container">
+            <div
+              v-if="inView"
+              :class="{ after: inView }"
+              class="product-name-container"
+            >
               <a v-if="locale == 'ua'" href="#" class="product-name">{{
                 product.title
               }}</a>
@@ -33,7 +44,11 @@
               }}</a>
             </div>
 
-            <div v-if="inView" :class="{ after: inView }" class="product-desc-container">
+            <div
+              v-if="inView"
+              :class="{ after: inView }"
+              class="product-desc-container"
+            >
               <p v-if="locale == 'ua'" class="product-desc">
                 {{ product.description }}
               </p>
@@ -83,10 +98,10 @@ export default {
           entry?.target?.lastChild?.classList?.add("animate-desc");
         }
 
-        if (!entry.isIntersecting) {
-          entry?.target?.firstChild?.classList?.remove("animate-title");
-          entry?.target?.lastChild?.classList?.remove("animate-desc");
-        }
+        // if (!entry.isIntersecting) {
+        //   entry?.target?.firstChild?.classList?.remove("animate-title");
+        //   entry?.target?.lastChild?.classList?.remove("animate-desc");
+        // }
       });
     });
 

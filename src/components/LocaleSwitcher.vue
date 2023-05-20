@@ -37,22 +37,22 @@ export default {
   align-items: center;
   //   width: 50px;
   height: 50px;
-  background-color: #00bfff;
+  // background-color: #00bfff;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s;
-  box-shadow: 0px -14px 14px rgba(0, 0, 255, 0.1) inset;
+  // box-shadow: 0px -14px 14px rgba(0, 0, 255, 0.1) inset;
 }
 
 .locale-switcher-container:hover {
   cursor: pointer;
-  background-color: #87cefa;
+  // background-color: #87cefa;
 }
 
 .locale-switcher-container:active {
-  background-color: #1e90ff;
+  // background-color: #1e90ff;
 }
 
 .select-element {

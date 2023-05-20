@@ -11,18 +11,38 @@
   background-position: top right;
   background-size: cover;
   // background-size: 100% 100%;
+  padding-bottom: 2%;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
+}
+
+.name {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 78px;
+  line-height: 120%;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgb(30, 144, 255);
+  // margin: auto;
+  padding-left: 1%;
+  margin-left: 1%;
+  background-color: white;
 }
 
 .banner-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  background: rgba(30, 144, 255, 0.8);
-  padding: 2%;
-  border-radius: 7px;
+  // width: 100vw;
+  // width: 100%;
+  //
+  background: rgba(30, 144, 255, 0.6);
+  //
+  // background: rgba(0, 0, 205, 0.3);
+  // background: rgba(70, 130, 180, 0.3);
+  // background: rgba(75, 75, 250, 0.3);
+  padding: 1%;
 
   a {
     border-radius: 7px;
@@ -30,11 +50,12 @@
     border: 1px solid $Blue;
     color: $Blue;
     background-color: $White;
+    font-weight: 500;
     // background-color: rgba(255, 255, 255, 0.5);
-  
+
     &:hover {
       color: $White;
-      background-color: $Blue;
+      background: rgba(30, 144, 255, 0.5);
       transition: .5s;
       border: 1px solid $White;
     }
@@ -44,17 +65,17 @@
 .slogan {
   margin: 0;
   padding: 0;
-  // color: $Black;
+  width: 100%;
   color: $White;
   @include h1;
   font-size: 40px;
   text-transform: uppercase;
   font-weight: bolder;
+  text-align: center;
 }
 
 .slogan-desc {
   color: $White;
-  // color: $Black;
   @include h2;
   margin: 20px 0px;
 }
@@ -62,12 +83,16 @@
 /*responсive*/
 
 @media screen and (max-width: 991px) {
-  .banner-content {
-    // width: 75%
-  }
 }
 
 @media screen and (max-width: 767px) {
+  .banner {
+    padding-bottom: 15%;
+  }
+
+  .banner-content {
+    padding: 3%;
+  }
 
   .slogan {
     @include h3;
@@ -81,9 +106,22 @@
 
 @media screen and (max-width: 575px) {
 
-  .banner-content {
-    // width: 80%;
+  .name {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 58px;
+    line-height: 120%;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgb(30, 144, 255);
+    margin: auto;
+    background-color: rgb(240, 248, 255);
+    ;
+  }
 
+  .banner-content {
+    align-items: center;
+    justify-content: center;
     a {
       padding: 6px 20px;
       border: 1px solid $Blue;
@@ -95,11 +133,11 @@
   }
 
   .slogan {
-    @include h4;
+    @include h5;
   }
 
   .slogan-desc {
-    @include h5;
+    @include text;
     font-weight: normal;
   }
 }

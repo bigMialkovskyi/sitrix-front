@@ -44,6 +44,7 @@
 
   .header-content {
     display: flex;
+    justify-content: end;
   }
 }
 
@@ -66,11 +67,11 @@
       position: relative;
 
       &:hover {
-        background-color: $Blue;
+        // background-color: $Blue;
         transition: .5s;
 
         a {
-          color: $White;
+          color: $Blue;
           transition: .5s;
         }
       }

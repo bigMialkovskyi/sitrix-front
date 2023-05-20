@@ -1,8 +1,8 @@
 .menu-hamburger {
   margin-left: auto;
   display: none;
-  background-color: #00BFFF;
-  box-shadow: 0px -14px 14px rgba(0, 0, 255, 0.1) inset;
+  // background-color: #00BFFF;
+  // box-shadow: 0px -14px 14px rgba(0, 0, 255, 0.1) inset;
   width: 50px;
   height: 50px;
   text-align: center;
@@ -12,12 +12,12 @@
 
 .menu-hamburger:hover {
   cursor: pointer;
-  background-color: #87CEFA;
+  // background-color: #87CEFA;
 }
 
-.menu-hamburger:active {
-  background-color: #1E90FF;
-}
+// .menu-hamburger:active {
+//   background-color: #1E90FF;
+// }
 
 .menu-hamburger::after {
   font-family: FontAwesome;

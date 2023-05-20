@@ -145,7 +145,11 @@ export default {
 }
 
 .header-content > * {
-  margin: 0 2vh 0 2vh;
+  border-radius: 7px;
+}
+
+.header-content > *:hover {
+  box-shadow: 0px -14px 14px rgba(30, 144, 255, 0.2) inset;
 }
 
 .active {
@@ -161,21 +165,17 @@ export default {
 .log-out-icon-box {
   width: 50px;
   height: 50px;
-  background-color: #00bfff;
+  // background-color: #00bfff;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s;
-  box-shadow: 0px -14px 14px rgba(0, 0, 255, 0.1) inset;
+  // box-shadow: 0px -14px 14px rgba(0, 0, 255, 0.1) inset;
 }
 
 .user-page-icon-box:hover {
   cursor: pointer;
-  background-color: #87cefa;
-}
-
-.user-page-icon-box:active {
-  background-color: #1e90ff;
+  // background-color: #87cefa;
 }
 </style>
