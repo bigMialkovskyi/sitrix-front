@@ -6,30 +6,39 @@
   flex-direction: column;
   justify-content: end;
   align-items: center;
-  // padding: auto;
   background: url("../assets/img/banner-bg-02.jpg")no-repeat;
   // background-position: center;
   background-position: top right;
   background-size: cover;
   // background-size: 100% 100%;
-  // padding-top: 15%;
-  padding-bottom: 5%;
+  padding-bottom: 2%;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
 }
 
+.name {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 120%;
+  text-transform: uppercase;
+  color: rgb(30, 144, 255);
+  // margin: 0 50%;
+  margin: auto;
+}
+
 .banner-content {
-  // width: 45%;
   display: flex;
-  // margin: auto;
-  // margin-top: auto;
   flex-direction: column;
   align-items: center;
-  // width: 75vw;
   width: 100vw;
-  background: rgba(30, 144, 255, 0.8);
-  padding: 2%;
-  padding-bottom: 4%;
+  //
+  background: rgba(30, 144, 255, 0.6);
+  //
+  // background: rgba(0, 0, 205, 0.3);
+  // background: rgba(70, 130, 180, 0.3);
+  // background: rgba(75, 75, 250, 0.3);
+  padding: 1%;
   border-radius: 7px;
 
   a {
@@ -38,11 +47,13 @@
     border: 1px solid $Blue;
     color: $Blue;
     background-color: $White;
+    font-weight: 500;
     // background-color: rgba(255, 255, 255, 0.5);
-  
+
     &:hover {
       color: $White;
-      background-color: $Blue;
+      // background-color: $Blue;
+      background: rgba(30, 144, 255, 0.5);
       transition: .5s;
       border: 1px solid $White;
     }
@@ -58,6 +69,7 @@
   font-size: 40px;
   text-transform: uppercase;
   font-weight: bolder;
+  text-align: center;
 }
 
 .slogan-desc {
@@ -71,14 +83,18 @@
 
 @media screen and (max-width: 991px) {
   .banner-content {
-    width: 75%
+    // width: 75%
   }
 }
 
 @media screen and (max-width: 767px) {
+  .banner {
+    padding: 15%;
+  }
 
   .banner-content {
-    padding-bottom: 5%;
+    // padding-bottom: 5%;
+    padding: 3%;
   }
 
   .slogan {
@@ -94,8 +110,12 @@
 @media screen and (max-width: 575px) {
 
   .banner-content {
-    padding-bottom: 8%;
-    width: 80%;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10%;
+
+    // padding-bottom: 8%;
+    // width: 80%;
 
     a {
       padding: 6px 20px;
@@ -108,11 +128,12 @@
   }
 
   .slogan {
-    @include h4;
+    @include h5;
   }
 
   .slogan-desc {
-    @include h5;
+    // @include h5;
+    @include text;
     font-weight: normal;
   }
 }

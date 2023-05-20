@@ -2,11 +2,14 @@
   <section class="banner">
     <!-- <div class="container"> -->
     <!-- <div> -->
-      <div  class="banner-content" v-if="!showModal">
-        <h1 :data-value="`${sloganDataValue}`" class="slogan">{{ $t("banner.slogan") }}</h1>
-        <!-- <h1 :data-value="banner.slogan-desc" class="slogan">{{ $t("banner.slogan") }}</h1> -->
-        <h2 class="slogan-desc">{{ $t("banner.slogan-desc") }}</h2>
-        <a href="#" @click="showModal = true">{{ $t("banner.button") }}</a>
+      <h1 class="name">sitrix</h1>
+      <div class="banner-content-bg">
+        <div  class="banner-content" v-if="!showModal">
+          <h1 :data-value="`${sloganDataValue}`" class="slogan">{{ $t("banner.slogan") }}</h1>
+          <!-- <h1 :data-value="banner.slogan-desc" class="slogan">{{ $t("banner.slogan") }}</h1> -->
+          <h2 class="slogan-desc">{{ $t("banner.slogan-desc") }}</h2>
+          <a href="#" @click="showModal = true">{{ $t("banner.button") }}</a>
+        </div>
       </div>
 
       <div class="modal-container" v-if="showModal" @close="showModal = false">
@@ -74,47 +77,6 @@ export default {
     return { t };
   },
 
-  watch: {
-    "$i18n.locale": function (newVal, oldVal) {
-      // this.locale = newVal;
-      this.sloganDataValue = this.$root.$t("banner.slogan-transform")
-      this.letters = this.$root.$t("banner.letters")
-    },
-  },
-
-  mounted() {
-    //34
-    // const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const letters = this.letters;
-
-    let interval = null;
-    let elem = document.querySelector(".slogan");
-
-    elem.addEventListener("mouseover", (event) => {
-      console.log(this.$root.$t("banner.slogan"))
-
-      let iteration = 0;
-
-      clearInterval(interval);
-
-      interval = setInterval(() => {
-        event.target.innerText = event.target.innerText
-          .split("")
-          .map((letter, index) => {
-            if (index < iteration) {
-              return event.target.dataset.value[index];
-            }
-            return letters[Math.floor(Math.random() * 26)];
-          })
-          .join("");
-        if (iteration >= event.target.dataset.value.length) {
-          clearInterval(interval);
-        }
-        iteration += 1 / 3;
-      }, 15);
-    });
-  },
-
   name: "Banner",
   data() {
     return {
@@ -128,7 +90,49 @@ export default {
     };
   },
 
+  watch: {
+    "$i18n.locale": function (newVal, oldVal) {
+      this.sloganDataValue = this.$root.$t("banner.slogan-transform");
+      this.letters = this.$root.$t("banner.letters");
+      this.animatedText(this.letters);
+    },
+  },
+
+  mounted() {
+    this.animatedText(this.letters);
+  },
+
   methods: {
+    animatedText: function (lettersArr) {
+      const letters = lettersArr;
+
+      let interval = null;
+      let elem = document.querySelector(".slogan");
+
+      elem.addEventListener("mouseover", (event) => {
+        // console.log(this.$root.$t("banner.slogan"));
+
+        let iteration = 0;
+
+        clearInterval(interval);
+
+        interval = setInterval(() => {
+          event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+              if (index < iteration) {
+                return event.target.dataset.value[index];
+              }
+              return letters[Math.floor(Math.random() * 26)];
+            })
+            .join("");
+          if (iteration >= event.target.dataset.value.length) {
+            clearInterval(interval);
+          }
+          iteration += 1 / 3;
+        }, 50);
+      });
+    },
     checkForm: function (e) {
       if (this.name && this.email && this.message) {
         return true;
@@ -167,6 +171,52 @@ export default {
 <style scoped lang="scss">
 @import "../styles/variables.scss";
 @import "../styles/banner.scss";
+////////////////////////////////////////////////////////////
+//animation bg
+
+.banner-content-bg {
+  background-image: url("https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg");
+  background-size: cover;
+  // -webkit-animation: slidein 100s;
+  // animation: slidein 100s;
+  -webkit-animation: slidein 70s;
+  animation: slidein 70s;
+
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+
+@-webkit-keyframes slidein {
+  from {
+    // background-position: top;
+    background-position: center;
+    background-size: 3000px;
+  }
+  to {
+    background-position: -100px 0px;
+    background-size: 2750px;
+  }
+}
+
+@keyframes slidein {
+  from {
+    // background-position: top;
+    background-position: center;
+    background-size: 3000px;
+  }
+  to {
+    background-position: -100px 0px;
+    background-size: 2750px;
+  }
+}
+
+////////////////////////////////////////////////////////////
 
 * {
   box-sizing: border-box;
