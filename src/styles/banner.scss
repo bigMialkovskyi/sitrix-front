@@ -42,7 +42,7 @@
   // background: rgba(0, 0, 205, 0.3);
   // background: rgba(70, 130, 180, 0.3);
   // background: rgba(75, 75, 250, 0.3);
-  padding: 1%;
+  padding: 2%;
 
   a {
     border-radius: 7px;
@@ -82,8 +82,7 @@
 
 /*responсive*/
 
-@media screen and (max-width: 991px) {
-}
+@media screen and (max-width: 991px) {}
 
 @media screen and (max-width: 767px) {
   .banner {
@@ -91,7 +90,7 @@
   }
 
   .banner-content {
-    padding: 3%;
+    padding: 7%;
   }
 
   .slogan {
@@ -105,6 +104,11 @@
 }
 
 @media screen and (max-width: 575px) {
+
+  .banner-content-bg,
+  .banner-name-bg {
+    margin: 10%;
+  }
 
   .name {
     font-style: normal;
@@ -122,6 +126,7 @@
   .banner-content {
     align-items: center;
     justify-content: center;
+
     a {
       padding: 6px 20px;
       border: 1px solid $Blue;

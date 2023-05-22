@@ -184,10 +184,6 @@ export default {
 
   background-image: url("https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg");
   background-size: cover;
-  // -webkit-animation: slidein 100s;
-  // animation: slidein 100s;
-  // -webkit-animation: slidein 70s;
-  // animation: slidein 70s;
   -webkit-animation: bounce 70s;
   animation: bounce 70s;
 
@@ -218,10 +214,6 @@ export default {
   background-size: cover;
   width: 100%;
 
-  // -webkit-animation: slidein 100s;
-  // animation: slidein 100s;
-  // -webkit-animation: slidein 70s;
-  // animation: slidein 70s;
   -webkit-animation: slidein 70s;
   animation: slidein 70s;
 
@@ -258,18 +250,6 @@ export default {
     background-size: 2750px;
   }
 }
-// @keyframes slidein {
-//   from {
-//     background-position: top left;
-//     // background-position: center;
-//     background-size: 3000px;
-//   }
-//   to {
-//     // background-position: 100px 0px;
-//     background-position: top right;
-//     background-size: 2750px;
-//   }
-// }
 
 ////////////////////////////////////////////////////////////
 
