@@ -78,6 +78,9 @@
   color: $White;
   @include h2;
   margin: 20px 0px;
+  text-transform: uppercase;
+  // font-weight: bolder;
+  text-align: center;
 }
 
 /*responсive*/

@@ -3,6 +3,7 @@
     <Banner />
     <GeneralInfo />
     <Products />
+    <Advertisement />
     <Contacts />
   </div>
 </template>
@@ -13,6 +14,7 @@ import Banner from "@/components/Banner.vue";
 import GeneralInfo from "@/components/GeneralInfo.vue";
 import Products from "@/components/Products.vue";
 import Contacts from "@/components/Contacts.vue";
+import Advertisement from "@/components/Advertisement.vue";
 
 export default {
   name: "HomeView",
@@ -22,6 +24,7 @@ export default {
     GeneralInfo,
     Products,
     Contacts,
+    Advertisement
   },
 };
 </script>

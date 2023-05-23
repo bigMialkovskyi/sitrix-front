@@ -26,7 +26,8 @@
     },
     "about-us": {
         "title": "about us",
-        "desc": "Our company is a model in the production of electronics to order. We offer a wide range of services including design, prototyping and manufacturing of electronics to meet the specific needs of our customers. Whether you require a small batch of custom designed circuits or a large production batch of specialized electronic components, we have the experience and resources to provide high quality products that meet your exact requirements. Our team of experienced engineers and technicians is committed to providing excellent customer service and achieving exceptional results. Contact us today to learn more about how we can help you with your electronics manufacturing needs.",
+        "desc-pt1": "Welcome to our company specializing in the development and sale of electronics! We are a team of professionals working on constant development and expansion of our product range.  \n\nWe always focus on the needs of our customers, and at the moment we direct most of our resources to the sale of products for the agro-industrial sector. Our goal is to provide modern and innovative solutions that will help increase efficiency and productivity in the field of agriculture.",
+        "desc-pt2": "Our products for the agro-industrial sector include a wide range of devices that are designed taking into account the specifics and requirements of this industry. We offer high-quality solutions that help farmers and agribusinesses optimize processes and achieve better results. \n\nOur team knows how to combine the latest technologies with the practical needs of the agricultural sector, ensuring ease of use and reliability of our products. We are proud that our solutions help our customers achieve high results in their business. \n\nPlease browse our product catalog and contact us if you have any questions or need advice. We are ready to provide you with the best solutions for your needs in the agribusiness sector.",
         "we-offer": {
             "title": "we offer",
             "consultation": {
@@ -81,5 +82,9 @@
             "title": "Sensor ID",
             "desc": "Unique device identifier (required to connect your personal account and the device you purchased and set it up)."
         }
+    },
+    "advertisement": {
+        "title": "comming soon",
+        "msg": "Wait for our development that will help increase the productivity of a small business or will be useful for home use"
     }
 }

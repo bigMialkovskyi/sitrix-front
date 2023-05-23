@@ -3,9 +3,25 @@
     <div class="container">
       <div class="about-us">
         <h1 class="about-us-title">{{ $t("about-us.title") }}</h1>
-        <div class="about-us-desc">
-          <p class="about-us-text">{{ $t("about-us.desc") }}</p>
-          <img src="../assets/img/PCB-about.jpg" alt="PCB-about" />
+
+        <div class="about-us-desc desc-pt1">
+          <span style="white-space: pre-line" class="about-us-text">
+            <img
+              class="first-desc-img"
+              src="../assets/img/PCB-about.jpg"
+              alt="PCB-about"
+            />{{ $t("about-us.desc-pt1") }}
+          </span>
+        </div>
+
+        <div class="about-us-desc desc-pt2">
+          <span style="white-space: pre-line" class="about-us-text">
+            <img
+              class="second-desc-img"
+              src="https://images.pexels.com/photos/574070/pexels-photo-574070.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="PCB-about"
+            />{{ $t("about-us.desc-pt2") }}
+          </span>
         </div>
       </div>
 
