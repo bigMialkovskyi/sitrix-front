@@ -215,8 +215,8 @@ export default {
   background-size: cover;
   width: 100%;
 
-  -webkit-animation: slidein 70s;
-  animation: slidein 70s;
+  -webkit-animation: slidein 100s;
+  animation: slidein 100s;
 
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
@@ -249,6 +249,22 @@ export default {
   to {
     background-position: -100px 0px;
     background-size: 2750px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  .banner-content-bg {
+    -webkit-animation: slidein 110s;
+    animation: slidein 110s;
+  }
+}
+
+@media screen and (max-width: 575px) {
+
+  .banner-content-bg {
+    -webkit-animation: slidein 120s;
+    animation: slidein 120s;
   }
 }
 

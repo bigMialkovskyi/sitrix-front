@@ -54,8 +54,8 @@ export default {
   background-size: cover;
   padding: 5vh 0;
 
-  -webkit-animation: slidein 70s;
-  animation: slidein 70s;
+  -webkit-animation: slidein 100s;
+  animation: slidein 100s;
 
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
@@ -101,6 +101,10 @@ export default {
 }
 
 @media screen and (max-width: 767px) {
+  .advertisement-content-bg {
+    -webkit-animation: slidein 110s;
+    animation: slidein 110s;
+  }
   .advertisement-content {
     padding: 7%;
   }
@@ -119,6 +123,10 @@ export default {
   .advertisement-contentt {
     align-items: center;
     justify-content: center;
+  }
+  .advertisement-content-bg {
+    -webkit-animation: slidein 120s;
+    animation: slidein 120s;
   }
 }
 </style>
