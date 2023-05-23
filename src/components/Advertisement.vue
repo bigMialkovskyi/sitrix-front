@@ -49,13 +49,10 @@ export default {
 //animation bg
 
 .advertisement-content-bg {
-  //   background-image: url("https://images.pexels.com/photos/2886937/pexels-photo-2886937.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-  //   background-image: url("https://images.pexels.com/photos/5230966/pexels-photo-5230966.jpeg?auto=compress&cs=tinysrgb&w=1600");
-//   background-image: url("../assets/img/greenhouse.jpg");
+  //   background-image: url("../assets/img/greenhouse.jpg");
   background-image: url("../assets/img/strawberry.jpg");
   background-size: cover;
   padding: 5vh 0;
-  //   width: 100%;
 
   -webkit-animation: slidein 70s;
   animation: slidein 70s;
@@ -95,14 +92,12 @@ export default {
 }
 
 .advertisement-content {
-  //   margin: 5vh 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-    // background: rgba(124, 252, 0, 0.6);
+  // background: rgba(124, 252, 0, 0.6);
   background: rgba(30, 144, 255, 0.6);
-  //   padding: 2%;
 }
 
 @media screen and (max-width: 767px) {
@@ -115,7 +110,7 @@ export default {
   }
 
   .slogan-desc {
-    @include h5 ;
+    @include h5;
     font-weight: normal;
   }
 }
