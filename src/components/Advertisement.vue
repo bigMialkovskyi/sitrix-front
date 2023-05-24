@@ -5,8 +5,7 @@
         <h1 class="slogan">
           {{ $t("advertisement.title") }}
         </h1>
-        <h2 class="slogan-desc">{{ $t("advertisement.msg") }}</h2>
-        <!-- <a href="#" @click="showModal = true">{{ $t("banner.button") }}</a> -->
+        <h2 class="msg-desc">{{ $t("advertisement.msg") }}</h2>
       </div>
     </div>
   </div>
@@ -70,11 +69,11 @@ export default {
 @-webkit-keyframes slidein {
   from {
     // background-position: top;
-    background-position: left;
+    background-position: right;
     background-size: 3000px;
   }
   to {
-    background-position: right;
+    background-position: left;
     background-size: 2750px;
   }
 }
@@ -96,8 +95,15 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  // background: rgba(124, 252, 0, 0.6);
   background: rgba(30, 144, 255, 0.6);
+}
+
+.msg-desc {
+  color: $White;
+  @include h4;
+  margin: 20px 0px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 @media screen and (max-width: 767px) {
@@ -113,7 +119,7 @@ export default {
     @include h3;
   }
 
-  .slogan-desc {
+  .msg-desc {
     @include h5;
     font-weight: normal;
   }
@@ -122,11 +128,17 @@ export default {
 @media screen and (max-width: 575px) {
   .advertisement-contentt {
     align-items: center;
-    justify-content: center;
+    // justify-content: center;
+    justify-content: flex-end;
   }
   .advertisement-content-bg {
     -webkit-animation: slidein 120s;
     animation: slidein 120s;
+  }
+
+  .msg-desc {
+    @include text;
+    font-weight: normal;
   }
 }
 </style>

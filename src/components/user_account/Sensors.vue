@@ -7,9 +7,6 @@
         v-for="device in devices"
         :key="device.id"
       >
-        <!-- <div>
-          <p>{{ device.name }}</p>
-        </div> -->
         <p class="device-name">{{ device.name }}</p>
 
         <div class="preview-bar">
@@ -242,32 +239,47 @@ export default {
 @import "../../styles/variables.scss";
 
 .user-document {
-  display: flex;
+  // display: flex;
+  width: 100vw;
+  height: 90vh;
+  padding: 0 1vw;
+  margin-bottom: 5vh;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
 
 .chart {
-  height: 80vh;
+  grid-area: 1 / 2 / 6 / 6;
+  // height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .chart-element {
-  height: 80vh;
-  width: 70vw;
+  // height: 80vh;
+  // width: 70vw;
+  width: 100%;
+  height: 100%;
+  // margin: auto;
 }
 
 .sensors-list {
+  grid-area: 1 / 1 / 6 / 2;
   margin: 20px 0;
-  height: 80vh;
-  width: 20vw;
+  // height: 80vh;
+  // width: 20vw;
+  // width: 100%;
+  // height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 5px;
   background-color: rgb(0, 191, 255);
   box-shadow: 0px 0px 24px rgba(0, 0, 255, 0.2);
-
 }
 
 .sensor-element {

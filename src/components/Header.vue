@@ -74,7 +74,11 @@
             alt="person icon"
           />
         </router-link>
-        <router-link v-if="isShowProfileBtn" class="user-page-icon-box" to="/user-page">
+        <router-link
+          v-if="isShowProfileBtn"
+          class="user-page-icon-box"
+          to="/user-page"
+        >
           <img
             class="user-page-icon"
             src="../assets/img/person-logined.svg"
@@ -82,7 +86,11 @@
           />
         </router-link>
         <span v-if="isShowLogout" class="log-out-icon-box" @click="logout">
-          <img class="user-page-icon" src="../assets/img/log-out.svg" alt="person icon" />
+          <img
+            class="user-page-icon"
+            src="../assets/img/log-out.svg"
+            alt="person icon"
+          />
         </span>
       </div>
     </div>

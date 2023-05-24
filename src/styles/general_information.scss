@@ -23,7 +23,7 @@
   padding: 2vh 0;
   margin: 1vh 0;
   justify-content: space-between;
-  background-image: linear-gradient(rgba(30, 144, 255, 0.2) , rgba(30, 144, 255, 0) 50%);
+  background-image: linear-gradient(rgba(30, 144, 255, 0.2), rgba(30, 144, 255, 0) 50%);
 }
 
 .desc-pt1 {
@@ -123,14 +123,22 @@
   .first-desc-img,
   .second-desc-img {
     float: none;
-    border-radius: 10px;
     width: 100%;
     margin: 0;
+  }
+
+  .first-desc-img {
+    border-radius: 10px;
+  }
+
+  .second-desc-img {
+    border-radius: 0 0 10px 10px;
   }
 
   .about-us-desc {
     display: grid;
     grid-template-columns: 100%;
+    background-image: linear-gradient(rgba(30, 144, 255, 0.2), rgba(30, 144, 255, 0) 50%, rgba(30, 144, 255, 0) 80%, rgba(30, 144, 255, 0.2) 99%);
 
     img {
       grid-row-start: 1;
