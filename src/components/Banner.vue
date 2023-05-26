@@ -9,9 +9,7 @@
       </div>
       <div class="banner-content-bg">
         <div  class="banner-content" v-if="!showModal">
-          <!-- <h1 :data-value="`${sloganDataValue}`" class="slogan">{{ $t("banner.slogan") }}</h1> -->
           <h1 class="slogan">{{ $t("banner.slogan") }}</h1>
-          <!-- <h1 :data-value="banner.slogan-desc" class="slogan">{{ $t("banner.slogan") }}</h1> -->
           <h2 class="slogan-desc">{{ $t("banner.slogan-desc") }}</h2>
           <a href="#" @click="showModal = true">{{ $t("banner.button") }}</a>
         </div>
@@ -90,54 +88,11 @@ export default {
       email: null,
       name: null,
       message: null,
-      // sloganDataValue: this.$root.$t("banner.slogan-transform"),
-      // letters: this.$root.$t("banner.letters"),
     };
   },
 
-  // watch: {
-  //   "$i18n.locale": function (newVal, oldVal) {
-  //     this.sloganDataValue = this.$root.$t("banner.slogan-transform");
-  //     this.letters = this.$root.$t("banner.letters");
-  //     this.animatedText(this.letters);
-  //   },
-  // },
-
-  mounted() {
-    // this.animatedText(this.letters);
-  },
 
   methods: {
-    // animatedText: function (lettersArr) {
-    //   const letters = lettersArr;
-
-    //   let interval = null;
-    //   let elem = document.querySelector(".slogan");
-
-    //   elem.addEventListener("mouseover", (event) => {
-    //     // console.log(this.$root.$t("banner.slogan"));
-
-    //     let iteration = 0;
-
-    //     clearInterval(interval);
-
-    //     interval = setInterval(() => {
-    //       event.target.innerText = event.target.innerText
-    //         .split("")
-    //         .map((letter, index) => {
-    //           if (index < iteration) {
-    //             return event.target.dataset.value[index];
-    //           }
-    //           return letters[Math.floor(Math.random() * 26)];
-    //         })
-    //         .join("");
-    //       if (iteration >= event.target.dataset.value.length) {
-    //         clearInterval(interval);
-    //       }
-    //       iteration += 1 / 3;
-    //     }, 100);
-    //   });
-    // },
     checkForm: function (e) {
       if (this.name && this.email && this.message) {
         return true;
