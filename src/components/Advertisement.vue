@@ -48,7 +48,6 @@ export default {
 //animation bg
 
 .advertisement-content-bg {
-  //   background-image: url("../assets/img/greenhouse.jpg");
   // background-image: url("../assets/img/strawberry.jpg");
   background-image: url("https://images.pexels.com/photos/16678051/pexels-photo-16678051.jpeg");
   background-size: cover;

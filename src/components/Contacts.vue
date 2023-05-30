@@ -9,21 +9,14 @@
             <div class="icon-container">
               <img src="../assets/img/phone-call.svg" alt="" />
             </div>
-            <a href="tel:(067) 570 34 89">(067) 570 34 89</a>
+            <a href="tel:(095) 408 27 05">(095) 408 27 05</a>
           </li>
           <li>
             <div class="icon-container">
               <img src="../assets/img/phone-call.svg" alt="" />
             </div>
-            <a href="tel:(067) 570 34 89">(067) 570 34 89</a>
+            <a href="tel:(068) 751 90 59">(068) 751 90 59</a>
           </li>
-          <!-- <p>{{ $t("contacts.mail") }}</p>
-          <li>
-            <div class="icon-container">
-              <img src="../assets/img/mail.svg" alt="" />
-            </div>
-            <a href="">sntelectronx@gmai.com</a>
-          </li> -->
         </ul>
 
         <ul class="contacts-elem">

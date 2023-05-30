@@ -7,27 +7,28 @@
   justify-content: end;
   align-items: center;
   background: url("../assets/img/banner-bg-02.jpg")no-repeat;
-  // background-position: center;
   background-position: top right;
   background-size: cover;
-  // background-size: 100% 100%;
   padding-bottom: 2%;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
 }
 
 .name {
+  -webkit-text-stroke: 1px white;
+  color: rgba(30, 144, 255, 0);
+  background-color: rgba(30, 144, 255, 0);
+
+  // color: rgb(30, 144, 255);
+  // background-color: white;
   font-style: normal;
   font-weight: 600;
   font-size: 78px;
   line-height: 120%;
   letter-spacing: .2em;
   text-transform: uppercase;
-  color: rgb(30, 144, 255);
-  // margin: auto;
   padding-left: 1%;
   margin-left: 1%;
-  background-color: white;
 }
 
 .banner-content {
@@ -47,17 +48,16 @@
   a {
     border-radius: 7px;
     padding: 13px 40px;
-    border: 1px solid $Blue;
-    color: $Blue;
-    background-color: $White;
     font-weight: 500;
-    // background-color: rgba(255, 255, 255, 0.5);
+    color: $White;
+    background: rgba(30, 144, 255, 0);
+    border: 1px solid $White;
 
     &:hover {
-      color: $White;
-      background: rgba(30, 144, 255, 0.5);
+      border: 1px solid $Blue;
+      color: $Blue;
+      background-color: $White;
       transition: .5s;
-      border: 1px solid $White;
     }
   }
 }
@@ -116,13 +116,12 @@
   .name {
     font-style: normal;
     font-weight: 500;
-    font-size: 58px;
+    // font-size: 58px;
     line-height: 120%;
     letter-spacing: .2em;
     text-transform: uppercase;
-    color: rgb(30, 144, 255);
+    -webkit-text-stroke: .5px white;
     margin: auto;
-    background-color: rgb(240, 248, 255);
     ;
   }
 
@@ -131,8 +130,9 @@
     justify-content: center;
 
     a {
-      padding: 6px 20px;
-      border: 1px solid $Blue;
+      font-weight: normal;
+      // padding: 6px 20px;
+      border: .5px solid;
 
       &:hover {
         border: 1px solid $White;

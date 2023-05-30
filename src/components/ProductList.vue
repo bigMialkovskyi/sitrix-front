@@ -26,7 +26,7 @@
           :key="product.id"
         >
           <div class="product-img-container">
-            <img :src="productImgURL + `${product.media.path}`" alt="product" />
+            <img :src="productImgURL + `${product.media.path}`" alt="product" class="product-img"/>
           </div>
 
           <div ref="observerElement" class="about-product">

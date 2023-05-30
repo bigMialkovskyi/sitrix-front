@@ -31,12 +31,12 @@
                     >{{ $t("header.product-menu.for-farmers") }}</a
                   >
                 </li>
-                <li>
+                <!-- <li>
                   <img src="../assets/img/weight-scale.svg" alt="icon" /><a
                     href="#measuring_device"
                     >{{ $t("header.product-menu.measuring-devices") }}</a
                   >
-                </li>
+                </li> -->
               </ul>
             </li>
             <li>
@@ -51,15 +51,15 @@
         <ul class="tel header-menu">
           <li class="down">
             <img src="../assets/img/tel.png" alt="tel" />
-            <a href="tel:(067) 570 34 89">(067) 570 34 89</a>
+            <a href="tel:(095) 408 27 05">(095) 408 27 05</a>
             <ul class="submenu">
               <li>
                 <img src="../assets/img/tel.png" alt="tel" />
-                <a href="tel:(067) 570 34 89">(067) 570 34 89</a>
+                <a href="tel:(095) 408 27 05">(095) 408 27 05</a>
               </li>
               <li>
                 <img src="../assets/img/tel.png" alt="tel" />
-                <a href="tel:(067) 570 34 89">(067) 570 34 89</a>
+                <a href="tel:(068) 751 90 59">(068) 751 90 59</a>
               </li>
             </ul>
           </li>
@@ -156,9 +156,9 @@ export default {
   border-radius: 7px;
 }
 
-.header-content > *:hover {
-  box-shadow: 0px -14px 14px rgba(30, 144, 255, 0.2) inset;
-}
+// .header-content > *:hover {
+//   box-shadow: 0px -14px 14px rgba(30, 144, 255, 0.2) inset;
+// }
 
 .active {
   display: block;

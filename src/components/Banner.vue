@@ -1,10 +1,8 @@
 <template>
   <div class="banner">
-    <!-- <div class="container"> -->
-    <!-- <div> -->
       <div class="banner-name-bg banner-name">
-        <div class="banner-content">
-          <h1 class="name"> sitrix</h1>
+        <div class="banner-content" v-if="!showModal">
+          <h1 class="name">sitrix</h1>
         </div>
       </div>
       <div class="banner-content-bg">
@@ -61,7 +59,6 @@
         <span class="bottom"></span>
         <span class="left"></span>
       </div>
-    <!-- </div> -->
   </div>
 </template>
 
@@ -90,7 +87,6 @@ export default {
       message: null,
     };
   },
-
 
   methods: {
     checkForm: function (e) {
@@ -208,7 +204,6 @@ export default {
 }
 
 @media screen and (max-width: 767px) {
-
   .banner-content-bg {
     -webkit-animation: slidein 110s;
     animation: slidein 110s;
@@ -216,7 +211,6 @@ export default {
 }
 
 @media screen and (max-width: 575px) {
-
   .banner-content-bg {
     -webkit-animation: slidein 120s;
     animation: slidein 120s;
