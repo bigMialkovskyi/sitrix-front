@@ -73,6 +73,7 @@
             src="../assets/img/person-no-login.svg"
             alt="person icon"
           />
+          <!-- <object data="../assets/img/person-no-login.svg"></object> -->
         </router-link>
         <router-link
           v-if="isShowProfileBtn"

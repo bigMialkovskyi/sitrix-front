@@ -6,6 +6,7 @@ import store from './store'
 import axios from "axios";
 import Vuex from 'vuex';
 import i18n from './i18n'
+import './index.css'
 
 axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 
