@@ -35,7 +35,7 @@
             <div class="icon-container">
               <img src="../assets/img/instagram-social.svg" alt="" />
             </div>
-            <a href="https://instagram.com/snt_electronics?igshid=OGQ2MjdiOTE="
+            <a href="https://instagram.com/sitrix.co?igshid=MzRlODBiNWFlZA=="
               >Instagram</a
             >
           </li>
