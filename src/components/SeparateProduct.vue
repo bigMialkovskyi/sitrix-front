@@ -1,75 +1,63 @@
 <template>
   <div id="app" class="app-container">
-    <!-- <vueper-slides>
-      <vueper-slide
-        v-for="(slide, i) in slides"
-        :key="i"
-        :title="slide.title"
-        :content="slide.content"
-      >
-      </vueper-slide>
-    </vueper-slides> -->
-
-    <vueper-slides
+    <!-- <vueper-slides
       :visible-slides="3"
       :slide-ratio="1 / 4"
       :dragging-distance="70"
-    >
-      <template #arrow-left>
+    > -->
+    <vueper-slides class="slider" autoplay fixed-height="30vh">
+      <!-- <template #arrow-left>
         <i class="icon icon-arrow-left" />
       </template>
 
       <template #arrow-right>
         <i class="icon icon-arrow-right" />
-      </template>
+      </template> -->
 
       <vueper-slide
         class="slide"
-        v-for="i in slides.length"
+        v-for="(slide, i) in slides"
         :key="i"
-        :title="i.toString()"
+        :title="`<h1>` + `${slide.title}` + `<h1>`"
+        :image="productImgURL + `${slide.media.path}`"
       />
+      <template #pause>
+        <i class="icon pause_circle_outline"></i>
+      </template>
+      <!-- <template #pause>
+        <i class="icon pause_circle_outline"></i>
+      </template> -->
     </vueper-slides>
   </div>
 </template>
 
 <script>
-// import * as Hammer from "hammerjs";
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
+import { productApi } from "@/api/product-api";
 
 export default {
   components: { VueperSlides, VueperSlide },
   name: "SeparateProduct",
   data() {
     return {
-      slides: [
-        {
-          title: "Slide #1",
-          content: "Slide 1 content.",
-        },
-        {
-          title: "Slide #2",
-          content: "Slide 2 content.",
-        },
-        {
-          title: "Slide #3",
-          content: "Slide 2 content.",
-        },
-        {
-          title: "Slide #4",
-          content: "Slide 2 content.",
-        },
-        {
-          title: "Slide #5",
-          content: "Slide 2 content.",
-        },
-        {
-          title: "Slide #6",
-          content: "Slide 2 content.",
-        },
-      ],
+      productImgURL: process.env.VUE_APP_API_URL,
+      slides: [],
     };
+  },
+
+  created: async function () {
+    this.fetchProducts();
+  },
+
+  methods: {
+    fetchProducts() {
+      productApi.fetchAvailableProducts().then((products) => {
+        products.forEach((element) => {
+          this.slides.push(element);
+        });
+      });
+    },
   },
 };
 </script>
@@ -78,8 +66,26 @@ export default {
 @import "../styles/variables.scss";
 @import "../styles/banner.scss";
 
+.slider {
+  background-color: #03bbff;
+  // height: 20vh;
+}
+
 .slide {
-  border: 1px solid black;
-  margin: 1vh;
+  // height: 20vh;
+  // border: 1px solid black;
+  // height: 20vh;
+  // width: 40vw;
+  // background-color: #03bbff;
+  // margin: 1vh;
+  // background-size: 30%;
+  // height: 20vh;
+  // height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  
+  h1 {
+    font-size: 58px;
+  }
 }
 </style>
