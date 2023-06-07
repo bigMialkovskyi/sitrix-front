@@ -1,19 +1,21 @@
 <template>
   <div id="app" class="app-container">
-    <!-- <vueper-slides
-      :visible-slides="3"
-      :slide-ratio="1 / 4"
-      :dragging-distance="70"
-    > -->
-    <vueper-slides class="slider" autoplay fixed-height="30vh">
-      <!-- <template #arrow-left>
-        <i class="icon icon-arrow-left" />
-      </template>
+    <div class="product-banner">
+      <div class="advertisement-content-bg">
+        <div class="product-banner-content">
+          <div class="img-container">
+            <img
+              class="product-img"
+              :src="productImgURL + `${slides[3].media.path}`"
+              alt=""
+            />
+          </div>
+          <h1 class="product-name">{{ slides[3].title }}</h1>
+        </div>
+      </div>
+    </div>
 
-      <template #arrow-right>
-        <i class="icon icon-arrow-right" />
-      </template> -->
-
+    <vueper-slides class="slider" autoplay fixed-height="30vh" :dragging-distance="70">
       <vueper-slide
         class="slide"
         v-for="(slide, i) in slides"
@@ -24,9 +26,6 @@
       <template #pause>
         <i class="icon pause_circle_outline"></i>
       </template>
-      <!-- <template #pause>
-        <i class="icon pause_circle_outline"></i>
-      </template> -->
     </vueper-slides>
   </div>
 </template>
@@ -72,20 +71,98 @@ export default {
 }
 
 .slide {
-  // height: 20vh;
-  // border: 1px solid black;
-  // height: 20vh;
-  // width: 40vw;
-  // background-color: #03bbff;
-  // margin: 1vh;
-  // background-size: 30%;
-  // height: 20vh;
-  // height: 100%;
   background-size: contain;
   background-repeat: no-repeat;
-  
+
   h1 {
     font-size: 58px;
+    color: green;
   }
+}
+
+////////////////////////
+
+@import "../styles/variables.scss";
+@import "../styles/banner.scss";
+////////////////////////////////////////////////////////////
+//animation bg
+
+.advertisement-content-bg {
+  // background-image: url("../assets/img/strawberry.jpg");
+  // background-image: url("https://images.pexels.com/photos/16678051/pexels-photo-16678051.jpeg");
+  background-image: url("https://images.pexels.com/photos/3650647/pexels-photo-3650647.jpeg");
+  background-size: cover;
+  // padding: 5vh 0;
+
+  -webkit-animation: slidein 100s;
+  animation: slidein 100s;
+
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+
+@-webkit-keyframes slidein {
+  from {
+    // background-position: top;
+    background-position: right;
+    background-size: 3000px;
+  }
+  to {
+    background-position: left;
+    background-size: 2750px;
+  }
+}
+
+@keyframes slidein {
+  from {
+    // background-position: top;
+    background-position: left;
+    background-size: 3000px;
+  }
+  to {
+    background-position: right;
+    background-size: 2750px;
+  }
+}
+
+.product-banner-content {
+  height: 100%;
+  padding: 0 5vw;
+  display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
+  // background: rgba(30, 144, 255, 0.6);
+  // background: linear-gradient(to right, rgb(30, 144, 255) 50%, rgba(30, 144, 255, 0) 90%);
+  background: linear-gradient(to right, #03bbff 50%, rgba(30, 144, 255, 0) 90%);
+}
+
+.product-img {
+  // height: 30vh;
+  width: 35vw;
+}
+
+.product-name {
+  // margin-right: 5vw;
+  -webkit-text-stroke: 2px white;
+  // -webkit-text-stroke: 2px #03bbff;
+  color: rgba(30, 144, 255, 0);
+  background-color: rgba(30, 144, 255, 0);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 78px;
+  line-height: 120%;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding-left: 1%;
+  margin-left: 1%;
 }
 </style>
