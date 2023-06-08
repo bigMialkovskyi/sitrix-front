@@ -5,13 +5,32 @@
         <div class="product-banner-content">
           <div class="img-container">
             <img
-              class="product-img"
+              class="product-img rounded-full"
               :src="productImgURL + `${slides[3].media.path}`"
               alt=""
             />
           </div>
           <h1 class="product-name">{{ slides[3].title }}</h1>
         </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="desc-container">
+        <p class="desc text-justify">{{ slides[3].description }}</p>
+      </div>
+      <div class="specifications mt-5 mb-5">
+        <p class="mt-5 mb-5 text-center">specifications</p>
+        <ul class="pl-5 pr5">
+          <li class="flex mt-5 mb-5" v-for="item in specifications" :key="item.name">
+            <div class="basis-1/2">
+              <p class="text-left">{{ item.name }}</p>
+            </div>
+            <div class="basis-1/2">
+              <p class="text-center">{{ item.value }}</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
 
@@ -42,6 +61,28 @@ export default {
     return {
       productImgURL: process.env.VUE_APP_API_URL,
       slides: [],
+      specifications: [
+        {
+          name: "Напруга живлення",
+          value: "12В",
+        },
+        {
+          name: "Напруга вхідного ШИМ",
+          value: "5-12В",
+        },
+        {
+          name: "Частота сигналу",
+          value: "120Гц",
+        },
+        {
+          name: "Робочий струм",
+          value: "35А",
+        },
+        {
+          name: "Максимальний струм",
+          value: "40А",
+        },
+      ],
     };
   },
 
@@ -148,6 +189,10 @@ export default {
 .product-img {
   // height: 30vh;
   width: 35vw;
+}
+
+.content {
+  margin: 5vh 5vw;
 }
 
 .product-name {
