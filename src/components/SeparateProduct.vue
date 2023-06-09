@@ -1,11 +1,11 @@
 <template>
   <div id="app" class="app-container">
-    <div class="product-banner">
+    <div class="product-banner h-1/3">
       <div class="advertisement-content-bg">
         <div class="product-banner-content">
           <div class="img-container">
             <img
-              class="product-img rounded-full"
+              class="product-img"
               :src="productImgURL + `${slides[3].media.path}`"
               alt=""
             />
@@ -17,17 +17,17 @@
 
     <div class="content">
       <div class="desc-container">
-        <p class="desc text-justify">{{ slides[3].description }}</p>
+        <p class="text-center text-lg">{{ slides[3].description }}</p>
       </div>
       <div class="specifications mt-5 mb-5">
-        <p class="mt-5 mb-5 text-center">specifications</p>
+        <p class="text-lg mt-5 mb-5 text-center uppercase">характеристики</p>
         <ul class="pl-5 pr5">
           <li class="flex mt-5 mb-5" v-for="item in specifications" :key="item.name">
             <div class="basis-1/2">
-              <p class="text-left">{{ item.name }}</p>
+              <p class="text-lg text-left">{{ item.name }}</p>
             </div>
             <div class="basis-1/2">
-              <p class="text-center">{{ item.value }}</p>
+              <p class="text-lg text-center">{{ item.value }}</p>
             </div>
           </li>
         </ul>
@@ -186,10 +186,10 @@ export default {
   background: linear-gradient(to right, #03bbff 50%, rgba(30, 144, 255, 0) 90%);
 }
 
-.product-img {
-  // height: 30vh;
-  width: 35vw;
-}
+// .product-img {
+//   // height: 30vh;
+//   width: 35vw;
+// }
 
 .content {
   margin: 5vh 5vw;
