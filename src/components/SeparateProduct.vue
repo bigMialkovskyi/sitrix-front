@@ -1,40 +1,49 @@
 <template>
   <div id="app" class="app-container">
-    <div class="product-banner h-1/3">
-      <div class="advertisement-content-bg">
-        <div class="product-banner-content">
-          <div class="img-container">
-            <img
-              class="product-img"
-              :src="productImgURL + `${slides[3].media.path}`"
-              alt=""
-            />
-          </div>
-          <h1 class="product-name">{{ slides[3].title }}</h1>
+    <div class="product-content-bg product-banner h-30vh">
+      <div class="product-banner-content">
+        <div class="img-container w-1/3">
+          <img
+            class="product-img"
+            :src="productImgURL + `${slides[3].media.path}`"
+            alt=""
+          />
         </div>
+        <h1 class="product-name xl:text-7xl lg:text-6xl md:text-5xl min-[300px]:text-5xl">
+          {{ slides[3].title }}
+        </h1>
       </div>
     </div>
 
-    <div class="content">
-      <div class="desc-container">
-        <p class="text-center text-lg">{{ slides[3].description }}</p>
-      </div>
-      <div class="specifications mt-5 mb-5">
+    <div class="m-5">
+      <p class="text-center text-lg">{{ slides[3].description }}</p>
+    </div>
+
+    <ul class="pr5">
+      <div class="specifications mt-2 pt-5 pb-5 bg-gray">
         <p class="text-lg mt-5 mb-5 text-center uppercase">характеристики</p>
-        <ul class="pl-5 pr5">
-          <li class="flex mt-5 mb-5" v-for="item in specifications" :key="item.name">
-            <div class="basis-1/2">
-              <p class="text-lg text-left">{{ item.name }}</p>
-            </div>
-            <div class="basis-1/2">
-              <p class="text-lg text-center">{{ item.value }}</p>
-            </div>
-          </li>
-        </ul>
       </div>
-    </div>
+      <li
+        class="pl-12 flex pt-5 pb-5"
+        :class="{ 'bg-gray': item.index % 2 }"
+        v-for="item in specifications"
+        :key="item.name"
+      >
+        <div class="basis-1/2">
+          <p class="text-lg text-left">{{ item.name }}</p>
+        </div>
+        <div class="basis-1/2">
+          <p class="text-lg text-center">{{ item.value }}</p>
+        </div>
+      </li>
+    </ul>
 
-    <vueper-slides class="slider" autoplay fixed-height="30vh" :dragging-distance="70">
+    <vueper-slides
+      class="slider mt-5 mb-5"
+      autoplay
+      fixed-height="30vh"
+      :dragging-distance="70"
+    >
       <vueper-slide
         class="slide"
         v-for="(slide, i) in slides"
@@ -61,26 +70,32 @@ export default {
     return {
       productImgURL: process.env.VUE_APP_API_URL,
       slides: [],
+      isActive: true,
       specifications: [
         {
           name: "Напруга живлення",
           value: "12В",
+          index: 1,
         },
         {
           name: "Напруга вхідного ШИМ",
           value: "5-12В",
+          index: 2,
         },
         {
           name: "Частота сигналу",
           value: "120Гц",
+          index: 3,
         },
         {
           name: "Робочий струм",
           value: "35А",
+          index: 4,
         },
         {
           name: "Максимальний струм",
           value: "40А",
+          index: 5,
         },
       ],
     };
@@ -120,20 +135,12 @@ export default {
     color: green;
   }
 }
-
-////////////////////////
-
-@import "../styles/variables.scss";
-@import "../styles/banner.scss";
 ////////////////////////////////////////////////////////////
 //animation bg
 
-.advertisement-content-bg {
-  // background-image: url("../assets/img/strawberry.jpg");
-  // background-image: url("https://images.pexels.com/photos/16678051/pexels-photo-16678051.jpeg");
+.product-content-bg {
   background-image: url("https://images.pexels.com/photos/3650647/pexels-photo-3650647.jpeg");
   background-size: cover;
-  // padding: 5vh 0;
 
   -webkit-animation: slidein 100s;
   animation: slidein 100s;
@@ -150,7 +157,6 @@ export default {
 
 @-webkit-keyframes slidein {
   from {
-    // background-position: top;
     background-position: right;
     background-size: 3000px;
   }
@@ -162,7 +168,6 @@ export default {
 
 @keyframes slidein {
   from {
-    // background-position: top;
     background-position: left;
     background-size: 3000px;
   }
@@ -172,42 +177,36 @@ export default {
   }
 }
 
+.product-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .product-banner-content {
   height: 100%;
   padding: 0 5vw;
   display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // align-items: flex-start;
+
   justify-content: space-between;
   align-items: center;
-  // background: rgba(30, 144, 255, 0.6);
-  // background: linear-gradient(to right, rgb(30, 144, 255) 50%, rgba(30, 144, 255, 0) 90%);
   background: linear-gradient(to right, #03bbff 50%, rgba(30, 144, 255, 0) 90%);
 }
 
-// .product-img {
-//   // height: 30vh;
-//   width: 35vw;
-// }
-
-.content {
-  margin: 5vh 5vw;
-}
-
 .product-name {
-  // margin-right: 5vw;
-  -webkit-text-stroke: 2px white;
-  // -webkit-text-stroke: 2px #03bbff;
+  -webkit-text-stroke: 1px white;
   color: rgba(30, 144, 255, 0);
   background-color: rgba(30, 144, 255, 0);
   font-style: normal;
   font-weight: 600;
-  font-size: 78px;
   line-height: 120%;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   padding-left: 1%;
   margin-left: 1%;
+}
+
+.bg-gray {
+  background: rgba(192, 192, 192, 0.2);
 }
 </style>
