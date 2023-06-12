@@ -38,22 +38,36 @@
       </li>
     </ul>
 
-    <vueper-slides
+    <!-- <vueper-slides
       class="slider mt-5 mb-5"
       autoplay
       fixed-height="30vh"
       :dragging-distance="70"
-    >
-      <vueper-slide
-        class="slide"
-        v-for="(slide, i) in slides"
-        :key="i"
-        :title="`<h1>` + `${slide.title}` + `<h1>`"
-        :image="productImgURL + `${slide.media.path}`"
-      />
-      <template #pause>
-        <i class="icon pause_circle_outline"></i>
-      </template>
+    > -->
+    <vueper-slides class="slider mt-5 mb-5" fixed-height="30vh" :dragging-distance="70">
+      <vueper-slide class="slide" v-for="(slide, i) in slides" :key="i">
+        <template #content>
+          <!-- <div class="vueperslide__content-wrapper" style="flex-direction: row"> -->
+          <div class="flex justify-evenly items-center h-30vh">
+            <div class="img-container w-1/3">
+              <img
+                class="product-img"
+                :src="productImgURL + `${slide.media.path}`"
+                alt="product-img"
+              />
+            </div>
+            <h1
+              class="product-name xl:text-7xl lg:text-6xl md:text-5xl min-[300px]:text-5xl"
+            >
+              {{ slide.title }}
+            </h1>
+          </div>
+        </template>
+
+        <template #pause>
+          <i class="icon pause_circle_outline"></i>
+        </template>
+      </vueper-slide>
     </vueper-slides>
   </div>
 </template>
@@ -130,10 +144,14 @@ export default {
   background-size: contain;
   background-repeat: no-repeat;
 
-  h1 {
-    font-size: 58px;
-    color: green;
-  }
+  // h1 {
+  //   font-size: 58px;
+  //   color: green;
+  // }
+}
+
+.product-img {
+  max-height: 30vh;
 }
 ////////////////////////////////////////////////////////////
 //animation bg
@@ -185,6 +203,7 @@ export default {
 
 .product-banner-content {
   height: 100%;
+  width: 100%;
   padding: 0 5vw;
   display: flex;
 
@@ -204,6 +223,12 @@ export default {
   text-transform: uppercase;
   padding-left: 1%;
   margin-left: 1%;
+}
+
+.product-name:hover {
+  -webkit-text-stroke: 1px white;
+  color: white;
+  background-color: rgba(30, 144, 255, 0);
 }
 
 .bg-gray {
