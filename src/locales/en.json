@@ -86,5 +86,10 @@
     "advertisement": {
         "title": "comming soon",
         "msg": "a new development that will increase the productivity of your business or come in handy in your home"
+    },
+    "product-page": {
+        "specifications": "specifications",
+        "price": "Check availability and price",
+        "more": "you may also be interested in:"
     }
 }

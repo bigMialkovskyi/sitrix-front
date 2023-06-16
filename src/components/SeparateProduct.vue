@@ -15,39 +15,62 @@
       </div>
     </div>
 
-    <div class="m-5">
-      <p class="text-center text-lg">{{ slides[3].description }}</p>
+    <div class="m-5 p-10">
+      <p v-if="locale == 'ua'" class="text-center text-lg">
+        {{ slides[3].description }}
+      </p>
+      <p v-if="locale == 'en'" class="text-center text-lg">
+        {{ slides[3].description_en }}
+      </p>
     </div>
 
     <ul class="pr5">
       <div class="specifications mt-2 pt-5 pb-5 bg-gray">
-        <p class="text-lg mt-5 mb-5 text-center uppercase">характеристики</p>
+        <p class="text-lg mt-5 mb-5 text-center uppercase">
+          {{ $t("product-page.specifications") }}
+        </p>
       </div>
       <li
         class="pl-12 flex pt-5 pb-5"
-        :class="{ 'bg-gray': item.index % 2 }"
-        v-for="item in specifications"
+        :class="{ 'bg-gray': slides[3].specifications.indexOf(item) % 2 }"
+        v-for="item in slides[3].specifications"
         :key="item.name"
       >
         <div class="basis-1/2">
-          <p class="text-lg text-left">{{ item.name }}</p>
+          <p v-if="locale == 'ua'" class="text-lg text-left">{{ item.name }}</p>
+          <p v-if="locale == 'en'" class="text-lg text-left">
+            {{ item.name_en }}
+          </p>
         </div>
         <div class="basis-1/2">
-          <p class="text-lg text-center">{{ item.value }}</p>
+          <p v-if="locale == 'ua'" class="text-lg text-center">
+            {{ item.value }}
+          </p>
+          <p v-if="locale == 'en'" class="text-lg text-center">
+            {{ item.value_en }}
+          </p>
         </div>
       </li>
     </ul>
 
-    <!-- <vueper-slides
+    <div class="mt-5 mb-5">
+      <div class="price-container p-5">
+        <h1 class="uppercase text-lg text-right">{{ $t("product-page.price") }}</h1>
+      </div>
+
+      <div class="more-container p-5">
+        <h1 class="uppercase text-lg">{{ $t("product-page.more") }}</h1>
+      </div>
+    </div>
+
+    <vueper-slides
       class="slider mt-5 mb-5"
-      autoplay
       fixed-height="30vh"
       :dragging-distance="70"
-    > -->
-    <vueper-slides class="slider mt-5 mb-5" fixed-height="30vh" :dragging-distance="70">
+      :bullets="false"
+    >
       <vueper-slide class="slide" v-for="(slide, i) in slides" :key="i">
         <template #content>
-          <!-- <div class="vueperslide__content-wrapper" style="flex-direction: row"> -->
           <div class="flex justify-evenly items-center h-30vh">
             <div class="img-container w-1/3">
               <img
@@ -85,33 +108,7 @@ export default {
       productImgURL: process.env.VUE_APP_API_URL,
       slides: [],
       isActive: true,
-      specifications: [
-        {
-          name: "Напруга живлення",
-          value: "12В",
-          index: 1,
-        },
-        {
-          name: "Напруга вхідного ШИМ",
-          value: "5-12В",
-          index: 2,
-        },
-        {
-          name: "Частота сигналу",
-          value: "120Гц",
-          index: 3,
-        },
-        {
-          name: "Робочий струм",
-          value: "35А",
-          index: 4,
-        },
-        {
-          name: "Максимальний струм",
-          value: "40А",
-          index: 5,
-        },
-      ],
+      locale: this.$i18n.locale,
     };
   },
 
@@ -123,9 +120,15 @@ export default {
     fetchProducts() {
       productApi.fetchAvailableProducts().then((products) => {
         products.forEach((element) => {
-          this.slides.push(element);
+          if (element.product_type == "for_farmers") this.slides.push(element);
         });
       });
+    },
+  },
+
+  watch: {
+    "$i18n.locale": function (newVal, oldVal) {
+      this.locale = newVal;
     },
   },
 };
@@ -143,11 +146,6 @@ export default {
 .slide {
   background-size: contain;
   background-repeat: no-repeat;
-
-  // h1 {
-  //   font-size: 58px;
-  //   color: green;
-  // }
 }
 
 .product-img {
@@ -210,6 +208,14 @@ export default {
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(to right, #03bbff 50%, rgba(30, 144, 255, 0) 90%);
+}
+
+.more-container {
+  background: linear-gradient(to right, #ff4703 30%, rgba(30, 144, 255, 0) 70%);
+}
+
+.price-container {
+  background: linear-gradient(to left, #03bbff 30%, rgba(30, 144, 255, 0) 70%);
 }
 
 .product-name {
