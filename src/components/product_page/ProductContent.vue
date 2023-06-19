@@ -53,7 +53,7 @@
       </li>
     </ul>
 
-    <div class="mt-5 mb-5">
+    <!-- <div class="mt-5 mb-5">
       <div class="price-container p-5">
         <h1 class="more-price uppercase text-lg text-right">
           {{ $t("product-page.price") }}
@@ -95,7 +95,7 @@
           <i class="icon pause_circle_outline"></i>
         </template>
       </vueper-slide>
-    </vueper-slides>
+    </vueper-slides> -->
   </div>
 </template>
 
@@ -106,7 +106,7 @@ import { productApi } from "@/api/product-api";
 
 export default {
   components: { VueperSlides, VueperSlide },
-  name: "SeparateProduct",
+  name: "ProductContent",
   data() {
     return {
       productImgURL: process.env.VUE_APP_API_URL,
@@ -139,8 +139,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../styles/variables.scss";
-@import "../styles/banner.scss";
+@import "../../styles/variables.scss";
+// @import "../../styles/banner.scss";
 
 .slider {
   background-color: #03bbff;

@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="app-container">
-    <div class="product-content-bg product-banner h-30vh">
+    <!-- <div class="product-content-bg product-banner h-30vh">
       <div class="product-banner-content">
         <div class="img-container w-1/3">
           <img
@@ -52,6 +52,9 @@
         </div>
       </li>
     </ul>
+ -->
+
+    <ProductContent />
 
     <div class="mt-5 mb-5">
       <div class="price-container p-5">
@@ -103,10 +106,11 @@
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
 import { productApi } from "@/api/product-api";
+import ProductContent from "@/components/product_page/ProductContent.vue";
 
 export default {
-  components: { VueperSlides, VueperSlide },
-  name: "SeparateProduct",
+  components: { ProductContent, VueperSlides, VueperSlide },
+  name: "ProductPage",
   data() {
     return {
       productImgURL: process.env.VUE_APP_API_URL,
