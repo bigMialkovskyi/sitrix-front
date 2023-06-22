@@ -1,60 +1,7 @@
 <template>
-  <div id="app" class="app-container">
-    <!-- <div class="product-content-bg product-banner h-30vh">
-      <div class="product-banner-content">
-        <div class="img-container w-1/3">
-          <img
-            class="product-img"
-            :src="productImgURL + `${slides[3].media.path}`"
-            alt=""
-          />
-        </div>
-        <h1 class="product-name xl:text-7xl lg:text-6xl md:text-5xl min-[300px]:text-5xl">
-          {{ slides[3].title }}
-        </h1>
-      </div>
-    </div>
-
-    <div class="m-5 p-10">
-      <p v-if="locale == 'ua'" class="text-center text-lg">
-        {{ slides[3].description }}
-      </p>
-      <p v-if="locale == 'en'" class="text-center text-lg">
-        {{ slides[3].description_en }}
-      </p>
-    </div>
-
-    <ul class="pr5">
-      <div class="specifications mt-2 pt-5 pb-5 bg-gray">
-        <p class="more-price text-lg mt-5 mb-5 text-center uppercase">
-          {{ $t("product-page.specifications") }}
-        </p>
-      </div>
-      <li
-        class="pl-12 flex pt-5 pb-5"
-        :class="{ 'bg-gray': slides[3].specifications.indexOf(item) % 2 }"
-        v-for="item in slides[3].specifications"
-        :key="item.name"
-      >
-        <div class="basis-1/2">
-          <p v-if="locale == 'ua'" class="text-lg text-left">{{ item.name }}</p>
-          <p v-if="locale == 'en'" class="text-lg text-left">
-            {{ item.name_en }}
-          </p>
-        </div>
-        <div class="basis-1/2">
-          <p v-if="locale == 'ua'" class="text-lg text-center">
-            {{ item.value }}
-          </p>
-          <p v-if="locale == 'en'" class="text-lg text-center">
-            {{ item.value_en }}
-          </p>
-        </div>
-      </li>
-    </ul>
- -->
-
-    <ProductContent />
+  <div class="app-container">
+    <!-- <ProductContent :products="slides" :currentProduct="testProduct" /> -->
+    <ProductContent :products="slides" />
 
     <div class="mt-5 mb-5">
       <div class="price-container p-5">
@@ -87,6 +34,7 @@
               />
             </div>
             <h1
+              @click="test(slide)"
               class="product-name xl:text-7xl lg:text-6xl md:text-5xl min-[300px]:text-5xl"
             >
               {{ slide.title }}
@@ -107,6 +55,7 @@ import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
 import { productApi } from "@/api/product-api";
 import ProductContent from "@/components/product_page/ProductContent.vue";
+import { isProxy, toRaw } from "vue";
 
 export default {
   components: { ProductContent, VueperSlides, VueperSlide },
@@ -117,6 +66,8 @@ export default {
       slides: [],
       isActive: true,
       locale: this.$i18n.locale,
+      currentProduct: null,
+      // testProduct: null,
     };
   },
 
@@ -124,7 +75,32 @@ export default {
     this.fetchProducts();
   },
 
+  // mounted() {
+  //   if (isProxy(this.slides)) {
+  //     const slidesss = toRaw(this.slides);
+  //     console.log(slidesss);
+  //     // rawObject.forEach((element) => {
+  //     //   console.log(element.id);
+  //     //   if (element._id == this.$route.query.id) console.log(element);
+  //     // });
+  //   }
+  //   // const raw = JSON.parse(JSON.stringify(this.slides));
+  //   // // const raw = { ...this.slides };
+  //   // console.log(raw);
+  // },
+
+  mounted() {
+    console.log(this.slides);
+  },
+
   methods: {
+    test(element) {
+      console.log("ping");
+      // console.log(this.slide);
+      // console.log(element);
+      this.testProduct = element;
+    },
+
     fetchProducts() {
       productApi.fetchAvailableProducts().then((products) => {
         products.forEach((element) => {

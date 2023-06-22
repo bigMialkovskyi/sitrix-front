@@ -1,5 +1,9 @@
 <template>
   <div class="group-type-box">
+    <div @click="handleClick()" class="logo">
+      <img class="logo-img" src="../assets/img/logo.png" alt="logo" />
+      <p class="logo-text"><span class="logo-print">SITRIX</span></p>
+    </div>
     <div class="direction-box">
       <!-- <a
         class="group-type-title unselectable"
@@ -20,21 +24,17 @@
     </div>
     <transition name="fade">
       <ul class="product-list" v-if="showProduct">
-        <li
-          class="product-element"
-          v-for="product in products"
-          :key="product.id"
-        >
+        <li class="product-element" v-for="product in products" :key="product.id">
           <div class="product-img-container">
-            <img :src="productImgURL + `${product.media.path}`" alt="product" class="product-img"/>
+            <img
+              :src="productImgURL + `${product.media.path}`"
+              alt="product"
+              class="product-img"
+            />
           </div>
 
           <div ref="observerElement" class="about-product">
-            <div
-              v-if="inView"
-              :class="{ after: inView }"
-              class="product-name-container"
-            >
+            <div v-if="inView" :class="{ after: inView }" class="product-name-container">
               <a v-if="locale == 'ua'" href="#" class="product-name">{{
                 product.title
               }}</a>
@@ -44,11 +44,7 @@
               }}</a>
             </div>
 
-            <div
-              v-if="inView"
-              :class="{ after: inView }"
-              class="product-desc-container"
-            >
+            <div v-if="inView" :class="{ after: inView }" class="product-desc-container">
               <p v-if="locale == 'ua'" class="product-desc">
                 {{ product.description }}
               </p>
@@ -117,6 +113,14 @@ export default {
           if (element.product_type == this.render_product_type)
             this.products.push(element);
         });
+      });
+    },
+
+    handleClick() {
+      this.$router.replace({
+        name: "product-page",
+        // params: { id: "123" },
+        query: { id: "646cba04385d053704e488fe" },
       });
     },
   },

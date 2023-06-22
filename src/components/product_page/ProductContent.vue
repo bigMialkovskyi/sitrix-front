@@ -1,8 +1,13 @@
 <template>
-  <div id="app" class="app-container">
+  <div v-if="slides.length" class="app-container">
     <div class="product-content-bg product-banner h-30vh">
       <div class="product-banner-content">
         <div class="img-container w-1/3">
+          <!-- <img
+            class="product-img"
+            :src="productImgURL + `${slides[3].media.path}`"
+            alt=""
+          /> -->
           <img
             class="product-img"
             :src="productImgURL + `${slides[3].media.path}`"
@@ -52,50 +57,6 @@
         </div>
       </li>
     </ul>
-
-    <!-- <div class="mt-5 mb-5">
-      <div class="price-container p-5">
-        <h1 class="more-price uppercase text-lg text-right">
-          {{ $t("product-page.price") }}
-        </h1>
-      </div>
-
-      <div class="more-container p-5">
-        <h1 class="more-price uppercase text-lg">
-          {{ $t("product-page.more") }}
-        </h1>
-      </div>
-    </div>
-
-    <vueper-slides
-      class="slider mt-5 mb-5"
-      fixed-height="30vh"
-      :dragging-distance="70"
-      :bullets="false"
-    >
-      <vueper-slide class="slide" v-for="(slide, i) in slides" :key="i">
-        <template #content>
-          <div class="flex justify-evenly items-center h-30vh">
-            <div class="img-container w-1/3">
-              <img
-                class="product-img"
-                :src="productImgURL + `${slide.media.path}`"
-                alt="product-img"
-              />
-            </div>
-            <h1
-              class="product-name xl:text-7xl lg:text-6xl md:text-5xl min-[300px]:text-5xl"
-            >
-              {{ slide.title }}
-            </h1>
-          </div>
-        </template>
-
-        <template #pause>
-          <i class="icon pause_circle_outline"></i>
-        </template>
-      </vueper-slide>
-    </vueper-slides> -->
   </div>
 </template>
 
@@ -103,6 +64,7 @@
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
 import { productApi } from "@/api/product-api";
+import { toRaw } from "vue";
 
 export default {
   components: { VueperSlides, VueperSlide },
@@ -114,6 +76,26 @@ export default {
       isActive: true,
       locale: this.$i18n.locale,
     };
+  },
+
+  props: {
+    products: {
+      type: Array,
+      required: true,
+    },
+    // currentProduct: {
+    //   type: Object,
+    //   required: true,
+    // },
+  },
+
+  mounted() {
+    this.slides = this.products;
+    // console.log(this.currentProduct);
+  },
+
+  updated: function () {
+    // console.log(this.currentProduct);
   },
 
   created: async function () {
