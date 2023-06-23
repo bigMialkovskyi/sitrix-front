@@ -1,9 +1,5 @@
 <template>
   <div class="group-type-box">
-    <div @click="handleClick()" class="logo">
-      <img class="logo-img" src="../assets/img/logo.png" alt="logo" />
-      <p class="logo-text"><span class="logo-print">SITRIX</span></p>
-    </div>
     <div class="direction-box">
       <!-- <a
         class="group-type-title unselectable"
@@ -53,6 +49,8 @@
                 {{ product.description_en }}
               </p>
             </div>
+
+            <p @click="handleClick(product._id)">більше</p>
           </div>
         </li>
       </ul>
@@ -116,11 +114,10 @@ export default {
       });
     },
 
-    handleClick() {
+    handleClick(productId) {
       this.$router.replace({
         name: "product-page",
-        // params: { id: "123" },
-        query: { id: "646cba04385d053704e488fe" },
+        query: { id: productId },
       });
     },
   },

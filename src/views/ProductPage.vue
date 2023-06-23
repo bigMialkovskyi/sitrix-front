@@ -1,8 +1,11 @@
 <template>
   <div class="app-container">
-    <!-- <ProductContent :products="slides" :currentProduct="testProduct" /> -->
-    <ProductContent :products="slides" />
-
+    <!-- <ProductContent
+      v-if="currentProduct"
+      :currentProduct="currentProduct"
+      :products="slides"
+    /> -->
+    <ProductContent :currentProduct="currentProduct" :products="slides" />
     <div class="mt-5 mb-5">
       <div class="price-container p-5">
         <h1 class="more-price uppercase text-lg text-right">
@@ -55,7 +58,7 @@ import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
 import { productApi } from "@/api/product-api";
 import ProductContent from "@/components/product_page/ProductContent.vue";
-import { isProxy, toRaw } from "vue";
+import axios from "axios";
 
 export default {
   components: { ProductContent, VueperSlides, VueperSlide },
@@ -67,44 +70,54 @@ export default {
       isActive: true,
       locale: this.$i18n.locale,
       currentProduct: null,
-      // testProduct: null,
     };
   },
 
   created: async function () {
-    this.fetchProducts();
+    // this.fetchProducts();
+    this.getInfo();
+    console.log(this.currentProduct);
   },
 
-  // mounted() {
-  //   if (isProxy(this.slides)) {
-  //     const slidesss = toRaw(this.slides);
-  //     console.log(slidesss);
-  //     // rawObject.forEach((element) => {
-  //     //   console.log(element.id);
-  //     //   if (element._id == this.$route.query.id) console.log(element);
-  //     // });
-  //   }
-  //   // const raw = JSON.parse(JSON.stringify(this.slides));
-  //   // // const raw = { ...this.slides };
-  //   // console.log(raw);
-  // },
-
-  mounted() {
-    console.log(this.slides);
-  },
+  mounted() {},
 
   methods: {
+    async getInfo() {
+      try {
+        const response = await axios.get("/products/get/all");
+        const products = response.data.products;
+
+        products.forEach((element) => {
+          if (element.product_type == "for_farmers") {
+            this.slides.push(element);
+            if (this.$route.query.id == element._id) {
+              console.log(element);
+              this.currentProduct = element;
+              console.log(this.currentProduct);
+            }
+          }
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
     test(element) {
       console.log("ping");
-      // console.log(this.slide);
-      // console.log(element);
-      this.testProduct = element;
+      // this.currentProduct = element;
     },
 
     fetchProducts() {
+      // console.log(this.$route.query.id);
       productApi.fetchAvailableProducts().then((products) => {
+        console.log(products);
         products.forEach((element) => {
-          if (element.product_type == "for_farmers") this.slides.push(element);
+          if (element.product_type == "for_farmers") {
+            this.slides.push(element);
+            if (this.$route.query.id == element._id) {
+              this.currentProduct = element;
+            }
+          }
         });
       });
     },

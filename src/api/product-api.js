@@ -13,6 +13,17 @@ const fetchAvailableProducts = async () => {
 		});
 };
 
+const fetchAvailableProductsAs = async () => {
+	try {
+		const response = await axios.get('/products/get/all');
+		console.log(response)
+		return response
+		// console.log(response);
+	} catch (error) {
+		console.error(error);
+	}
+};
+
 const fetchProducts = async () => {
 	return axios
 		.get(`/products/get/all`)
@@ -25,6 +36,7 @@ const fetchProducts = async () => {
 
 export const productApi = {
 	fetchAvailableProducts,
+	fetchAvailableProductsAs,
 	fetchProducts,
 	productList
 };

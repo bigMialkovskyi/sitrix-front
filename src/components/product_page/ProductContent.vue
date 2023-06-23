@@ -3,29 +3,41 @@
     <div class="product-content-bg product-banner h-30vh">
       <div class="product-banner-content">
         <div class="img-container w-1/3">
+          <img
+            class="product-img"
+            :src="productImgURL + `${productData.media.path}`"
+            alt=""
+          />
           <!-- <img
             class="product-img"
             :src="productImgURL + `${slides[3].media.path}`"
             alt=""
           /> -->
-          <img
-            class="product-img"
-            :src="productImgURL + `${slides[3].media.path}`"
-            alt=""
-          />
         </div>
-        <h1 class="product-name xl:text-7xl lg:text-6xl md:text-5xl min-[300px]:text-5xl">
+        <!-- <h1 class="product-name xl:text-7xl lg:text-6xl md:text-5xl min-[300px]:text-5xl">
           {{ slides[3].title }}
+        </h1> -->
+        <h1 class="product-name xl:text-7xl lg:text-6xl md:text-5xl min-[300px]:text-5xl">
+          {{ productData.title }}
         </h1>
       </div>
     </div>
-
+    <!-- 
     <div class="m-5 p-10">
       <p v-if="locale == 'ua'" class="text-center text-lg">
         {{ slides[3].description }}
       </p>
       <p v-if="locale == 'en'" class="text-center text-lg">
         {{ slides[3].description_en }}
+      </p>
+    </div> -->
+
+    <div class="m-5 p-10">
+      <p v-if="locale == 'ua'" class="text-center text-lg">
+        {{ productData.description }}
+      </p>
+      <p v-if="locale == 'en'" class="text-center text-lg">
+        {{ productData.description_en }}
       </p>
     </div>
 
@@ -37,10 +49,16 @@
       </div>
       <li
         class="pl-12 flex pt-5 pb-5"
-        :class="{ 'bg-gray': slides[3].specifications.indexOf(item) % 2 }"
-        v-for="item in slides[3].specifications"
+        :class="{ 'bg-gray': productData.specifications.indexOf(item) % 2 }"
+        v-for="item in productData.specifications"
         :key="item.name"
       >
+        <!-- <li
+          class="pl-12 flex pt-5 pb-5"
+          :class="{ 'bg-gray': slides[3].specifications.indexOf(item) % 2 }"
+          v-for="item in slides[3].specifications"
+          :key="item.name"
+        > -->
         <div class="basis-1/2">
           <p v-if="locale == 'ua'" class="text-lg text-left">{{ item.name }}</p>
           <p v-if="locale == 'en'" class="text-lg text-left">
@@ -75,6 +93,7 @@ export default {
       slides: [],
       isActive: true,
       locale: this.$i18n.locale,
+      productData: null,
     };
   },
 
@@ -83,33 +102,37 @@ export default {
       type: Array,
       required: true,
     },
-    // currentProduct: {
-    //   type: Object,
-    //   required: true,
-    // },
+    currentProduct: {
+      type: Object,
+      // required: true,
+    },
   },
 
-  mounted() {
-    this.slides = this.products;
-    // console.log(this.currentProduct);
+  // mounted() {
+  //   this.productData = this.currentProduct;
+  //   let current = this.currentProduct;
+  //   console.log(current);
+  //   console.log(this.products);
+  // },
+
+  created: async function () {
+    this.productData = this.currentProduct;
+    let current = this.currentProduct;
+    // console.log(current);
+  },
+
+  methods: {
+    // fetchProducts() {
+    //   productApi.fetchAvailableProducts().then((products) => {
+    //     products.forEach((element) => {
+    //       if (element.product_type == "for_farmers") this.slides.push(element);
+    //     });
+    //   });
+    // },
   },
 
   updated: function () {
     // console.log(this.currentProduct);
-  },
-
-  created: async function () {
-    this.fetchProducts();
-  },
-
-  methods: {
-    fetchProducts() {
-      productApi.fetchAvailableProducts().then((products) => {
-        products.forEach((element) => {
-          if (element.product_type == "for_farmers") this.slides.push(element);
-        });
-      });
-    },
   },
 
   watch: {
