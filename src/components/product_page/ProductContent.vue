@@ -1,5 +1,5 @@
 <template>
-  <div v-if="slides.length" class="app-container">
+  <div v-if="productData" class="app-container">
     <div class="product-content-bg product-banner h-30vh">
       <div class="product-banner-content">
         <div class="img-container w-1/3">
@@ -8,30 +8,12 @@
             :src="productImgURL + `${productData.media.path}`"
             alt=""
           />
-          <!-- <img
-            class="product-img"
-            :src="productImgURL + `${slides[3].media.path}`"
-            alt=""
-          /> -->
         </div>
-        <!-- <h1 class="product-name xl:text-7xl lg:text-6xl md:text-5xl min-[300px]:text-5xl">
-          {{ slides[3].title }}
-        </h1> -->
         <h1 class="product-name xl:text-7xl lg:text-6xl md:text-5xl min-[300px]:text-5xl">
           {{ productData.title }}
         </h1>
       </div>
     </div>
-    <!-- 
-    <div class="m-5 p-10">
-      <p v-if="locale == 'ua'" class="text-center text-lg">
-        {{ slides[3].description }}
-      </p>
-      <p v-if="locale == 'en'" class="text-center text-lg">
-        {{ slides[3].description_en }}
-      </p>
-    </div> -->
-
     <div class="m-5 p-10">
       <p v-if="locale == 'ua'" class="text-center text-lg">
         {{ productData.description }}
@@ -53,12 +35,6 @@
         v-for="item in productData.specifications"
         :key="item.name"
       >
-        <!-- <li
-          class="pl-12 flex pt-5 pb-5"
-          :class="{ 'bg-gray': slides[3].specifications.indexOf(item) % 2 }"
-          v-for="item in slides[3].specifications"
-          :key="item.name"
-        > -->
         <div class="basis-1/2">
           <p v-if="locale == 'ua'" class="text-lg text-left">{{ item.name }}</p>
           <p v-if="locale == 'en'" class="text-lg text-left">
@@ -81,8 +57,6 @@
 <script>
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
-import { productApi } from "@/api/product-api";
-import { toRaw } from "vue";
 
 export default {
   components: { VueperSlides, VueperSlide },
@@ -98,46 +72,32 @@ export default {
   },
 
   props: {
-    products: {
-      type: Array,
-      required: true,
-    },
     currentProduct: {
       type: Object,
-      // required: true,
+      required: true,
     },
   },
 
-  // mounted() {
-  //   this.productData = this.currentProduct;
-  //   let current = this.currentProduct;
-  //   console.log(current);
-  //   console.log(this.products);
-  // },
-
   created: async function () {
-    this.productData = this.currentProduct;
-    let current = this.currentProduct;
-    // console.log(current);
+    this.getProp();
   },
 
   methods: {
-    // fetchProducts() {
-    //   productApi.fetchAvailableProducts().then((products) => {
-    //     products.forEach((element) => {
-    //       if (element.product_type == "for_farmers") this.slides.push(element);
-    //     });
-    //   });
-    // },
-  },
-
-  updated: function () {
-    // console.log(this.currentProduct);
+    getProp() {
+      this.productData = this.currentProduct;
+    },
   },
 
   watch: {
-    "$i18n.locale": function (newVal, oldVal) {
+    "$i18n.locale": function (newVal) {
       this.locale = newVal;
+    },
+
+    currentProduct: {
+      handler: function (newValue) {
+        this.getProp();
+      },
+      deep: true,
     },
   },
 };

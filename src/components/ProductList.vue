@@ -41,16 +41,17 @@
             </div>
 
             <div v-if="inView" :class="{ after: inView }" class="product-desc-container">
-              <p v-if="locale == 'ua'" class="product-desc">
+              <p v-if="locale == 'ua'" class="desc-shadow product-desc">
                 {{ product.description }}
               </p>
 
-              <p v-if="locale == 'en'" class="product-desc">
+              <p v-if="locale == 'en'" class="desc-shadow product-desc">
                 {{ product.description_en }}
               </p>
+              <p class="more product-desc" @click="handleClick(product._id)">
+                {{ $t("products.more-btn") }}
+              </p>
             </div>
-
-            <p @click="handleClick(product._id)">більше</p>
           </div>
         </li>
       </ul>
@@ -133,6 +134,20 @@ export default {
 <style scoped lang="scss">
 @import "../styles/variables.scss";
 @import "../styles/products.scss";
+
+.more {
+  text-align: right;
+  color: #1764c2;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+.more:hover {
+  color: white;
+}
+
+.desc-shadow {
+  box-shadow: inset 0 4px 6px -3px #00bfff;
+}
 
 .animate-desc {
   animation-name: desc-animation;

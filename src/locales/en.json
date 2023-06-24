@@ -49,7 +49,8 @@
         "categories": {
             "agro": "agro-industrial sector",
             "meas": "Measuring devices"
-        }
+        },
+        "more-btn": "more"
     },
     "contacts": {
         "title": "Contact us",

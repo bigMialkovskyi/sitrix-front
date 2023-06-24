@@ -1,11 +1,6 @@
 <template>
   <div class="app-container">
-    <!-- <ProductContent
-      v-if="currentProduct"
-      :currentProduct="currentProduct"
-      :products="slides"
-    /> -->
-    <ProductContent :currentProduct="currentProduct" :products="slides" />
+    <ProductContent v-if="currentProduct" :currentProduct="currentProduct" />
     <div class="mt-5 mb-5">
       <div class="price-container p-5">
         <h1 class="more-price uppercase text-lg text-right">
@@ -28,7 +23,7 @@
     >
       <vueper-slide class="slide" v-for="(slide, i) in slides" :key="i">
         <template #content>
-          <div class="flex justify-evenly items-center h-30vh">
+          <div class="flex justify-evenly items-center h-30vh max-[550px]:flex-col">
             <div class="img-container w-1/3">
               <img
                 class="product-img"
@@ -37,7 +32,7 @@
               />
             </div>
             <h1
-              @click="test(slide)"
+              @click="nextProduct(slide)"
               class="product-name xl:text-7xl lg:text-6xl md:text-5xl min-[300px]:text-5xl"
             >
               {{ slide.title }}
@@ -56,7 +51,6 @@
 <script>
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
-import { productApi } from "@/api/product-api";
 import ProductContent from "@/components/product_page/ProductContent.vue";
 import axios from "axios";
 
@@ -74,9 +68,7 @@ export default {
   },
 
   created: async function () {
-    // this.fetchProducts();
-    this.getInfo();
-    console.log(this.currentProduct);
+    await this.getInfo();
   },
 
   mounted() {},
@@ -91,9 +83,7 @@ export default {
           if (element.product_type == "for_farmers") {
             this.slides.push(element);
             if (this.$route.query.id == element._id) {
-              console.log(element);
               this.currentProduct = element;
-              console.log(this.currentProduct);
             }
           }
         });
@@ -102,23 +92,20 @@ export default {
       }
     },
 
-    test(element) {
-      console.log("ping");
-      // this.currentProduct = element;
+    async newCurrentProduct(id) {
+      try {
+        const response = await axios.get(`/products/get/${id}`);
+        const product = response.data.product;
+        this.currentProduct = product;
+      } catch (error) {
+        console.error(error);
+      }
     },
 
-    fetchProducts() {
-      // console.log(this.$route.query.id);
-      productApi.fetchAvailableProducts().then((products) => {
-        console.log(products);
-        products.forEach((element) => {
-          if (element.product_type == "for_farmers") {
-            this.slides.push(element);
-            if (this.$route.query.id == element._id) {
-              this.currentProduct = element;
-            }
-          }
-        });
+    nextProduct(element) {
+      this.$router.replace({
+        name: "product-page",
+        query: { id: element._id },
       });
     },
   },
@@ -126,6 +113,9 @@ export default {
   watch: {
     "$i18n.locale": function (newVal, oldVal) {
       this.locale = newVal;
+    },
+    "$route.query.id": function (newVal) {
+      this.newCurrentProduct(newVal);
     },
   },
 };
