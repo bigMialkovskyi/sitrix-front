@@ -4,14 +4,12 @@ import { getCookie, setCookie, deleteCookie } from "@/utils/cookie"
 const state = {
   user: null,
   userID: null,
-  posts: null,
   devices: null,
 };
 
 const getters = {
   isAuthenticated: (state) => !!state.user,
   StateUserID: (state) => state.userID,
-  StatePosts: (state) => state.posts,
   StateDevices: (state) => state.devices,
 };
 
@@ -34,16 +32,6 @@ const actions = {
     setCookie("token", response.data.token, 1)
   },
 
-  async CreatePost({ dispatch }, post) {
-    await axios.post("post", post);
-    return await dispatch("GetPosts");
-  },
-
-  async GetPosts({ commit }) {
-    let response = await axios.get("posts");
-    commit("setPosts", response.data);
-  },
-
   async LogOut({ commit }) {
     let user = null;
     let userID = null;
@@ -62,9 +50,6 @@ const mutations = {
   },
   setDevices(state, devices) {
     state.devices = devices;
-  },
-  setPosts(state, posts) {
-    state.posts = posts;
   },
   logout(state, user, userID, devices) {
     state.user = user;

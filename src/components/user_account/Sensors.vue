@@ -1,13 +1,13 @@
 <template>
   <div class="user-document">
-    <ul class="sensors-list">
+    <ul v-if="devices.length" class="sensors-list">
       <li
         @click="selected = `${device.id}`"
         class="sensor-element"
         v-for="device in devices"
         :key="device.id"
       >
-        <p class="device-name">{{ device.name }}</p>
+        <p class="device-name">{{ device.name || 0 }}</p>
 
         <div class="preview-bar">
           <div class="preview-element">
@@ -16,7 +16,7 @@
               src="../../assets/img/battery-charging-vertical.svg"
               alt="batery"
             />
-            {{ device.batteryStatus }}
+            {{ device.batteryStatus || 0 }}
           </div>
           <div class="preview-element">
             <img
@@ -24,7 +24,7 @@
               src="../../assets/img/temperature-low.svg"
               alt="batery"
             />
-            <p>{{ device.measurements[0].airTemperature }}</p>
+            <p>{{ device.measurements[0].airTemperature || 0 }}</p>
           </div>
           <div class="preview-element">
             <img
@@ -32,7 +32,7 @@
               src="../../assets/img/humidity-light.svg"
               alt="batery"
             />
-            <p>{{ device.measurements[0].humidity }}</p>
+            <p>{{ device.measurements[0].humidity || 0 }}</p>
           </div>
           <div class="preview-element">
             <img
@@ -40,39 +40,26 @@
               src="../../assets/img/p-button.svg"
               alt="batery"
             />
-            <p>{{ device.measurements[0].pressure }}</p>
+            <p>{{ device.measurements[0].pressure || 0 }}</p>
           </div>
         </div>
       </li>
-      <li
-        @click="showModal = !showModal"
-        class="sensor-element new-sensor-button"
-      >
+      <li @click="showModal = !showModal" class="sensor-element new-sensor-button">
         <p>add new sensor</p>
       </li>
     </ul>
 
-    <div class="chart">
+    <div v-if="devices.length" class="chart">
       <div class="nav-bar">
         <ul class="options">
-          <li
-            @click="selectedParameter = `airTemperature`"
-            class="option-element"
-          >
+          <li @click="selectedParameter = `airTemperature`" class="option-element">
             air temperature
           </li>
-          <li
-            @click="selectedParameter = `soilTemperature`"
-            class="option-element"
-          >
+          <li @click="selectedParameter = `soilTemperature`" class="option-element">
             soil temperature
           </li>
-          <li @click="selectedParameter = `pressure`" class="option-element">
-            pressure
-          </li>
-          <li @click="selectedParameter = `humidity`" class="option-element">
-            humidity
-          </li>
+          <li @click="selectedParameter = `pressure`" class="option-element">pressure</li>
+          <li @click="selectedParameter = `humidity`" class="option-element">humidity</li>
         </ul>
       </div>
       <canvas class="chart-element" id="myChart"></canvas>
@@ -90,6 +77,7 @@ import store from "@/store";
 import { sensorApi } from "@/api/sensors-api";
 import Chart from "chart.js/auto";
 import NewSensorWindow from "@/components/user_account/NewSensorWindow.vue";
+import axios from "axios";
 
 export default {
   name: "Sensors",
@@ -109,9 +97,8 @@ export default {
     };
   },
 
-  created: async function () {
-    this.devices = await this.getSensors();
-    this.createChart();
+  mounted: async function () {
+    this.getSensorsList();
   },
 
   watch: {
@@ -122,9 +109,26 @@ export default {
     selectedParameter(newVal) {
       this.createChart();
     },
+
+    devices() {
+      this.createChart();
+    },
   },
 
   methods: {
+    async getSensorsList() {
+      try {
+        const data = {
+          sensorsList: store.getters.StateDevices,
+        };
+        const response = await axios.post("/agro-gsm-sensor/get/measurements", data);
+
+        this.devices = response.data.measForRespose;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
     async selectDevice() {
       let result = {};
       if (!this.selected) return null;
@@ -132,10 +136,6 @@ export default {
         if (element.id == this.selected) result = element;
       });
       return result;
-    },
-
-    async getSensors() {
-      return await sensorApi.getMeasurements();
     },
 
     async getMeas() {
@@ -149,12 +149,13 @@ export default {
       if ((await this.selectDevice()) == null) device = this.devices[0];
       else device = await this.selectDevice();
 
-      device.measurements.forEach((element) => {
+      device.measurements.some((element) => {
         airTemperature.unshift(element.airTemperature);
         soilTemperature.unshift(element.soilTemperature);
         pressure.unshift(element.pressure);
         humidity.unshift(element.humidity);
         date.unshift(element.updateTime.slice(4, 21));
+        return date.length == 100;
       });
       return {
         airTemperature,
@@ -166,8 +167,13 @@ export default {
     },
 
     async createChart() {
-      const { airTemperature, soilTemperature, pressure, humidity, date } =
-        await this.getMeas();
+      const {
+        airTemperature,
+        soilTemperature,
+        pressure,
+        humidity,
+        date,
+      } = await this.getMeas();
       let grapharea = document.getElementById("myChart").getContext("2d");
 
       let measForRender = [];
@@ -229,7 +235,8 @@ export default {
         sensorID: sensorID,
         name: sensorName,
       };
-      console.log(await sensorApi.connectSensor(form));
+      await sensorApi.connectSensor(form);
+      // console.log(await sensorApi.connectSensor(form));
     },
   },
 };
