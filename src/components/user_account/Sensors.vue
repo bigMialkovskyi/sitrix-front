@@ -98,18 +98,23 @@ export default {
   },
 
   mounted: async function () {
+    // отримуємо список з датчиками та їх вимірами
     this.getSensorsList();
   },
 
   watch: {
+    // новий рендер графіку якщо користувач обрав інний датчик
     async selected(newVal) {
       this.createChart();
     },
 
+    // новий рендер графіку якщо користувач обрав інше вимірювання
     selectedParameter(newVal) {
       this.createChart();
     },
 
+    // новий ренден графіку якщо змінилися виміри з графіку
+    // в основному використовується для почткового рендеру коли "mounted" не встигає отримати і передати дані в "chart"
     devices() {
       this.createChart();
     },
@@ -129,6 +134,7 @@ export default {
       }
     },
 
+    //функція що повертає обраний користувачем датчик для побудови графіку з його показниками
     async selectDevice() {
       let result = {};
       if (!this.selected) return null;
@@ -138,6 +144,8 @@ export default {
       return result;
     },
 
+    // функція для отримання показників з датчика
+    // для кожного показника створюється окремий масив щоб в подальшому будувати окремий графік
     async getMeas() {
       const airTemperature = [];
       const soilTemperature = [];
@@ -146,6 +154,8 @@ export default {
       const date = [];
       let device;
 
+      // якщо користувач не обрав ніякого датчика створюємо графік з датчиком що є першим у списку
+      // потрібен для першого рендеру при вході в особистий кабінет
       if ((await this.selectDevice()) == null) device = this.devices[0];
       else device = await this.selectDevice();
 
@@ -155,6 +165,10 @@ export default {
         pressure.unshift(element.pressure);
         humidity.unshift(element.humidity);
         date.unshift(element.updateTime.slice(4, 21));
+        // для зручності та наглядності будується графік лише з перших 100 елементів
+        // в перспективі:
+        // 1 - реалізувати можливість зміни цього числа користувачем
+        // 2 - ралізувати даний функціонал і на стороні сервера (щоб не завантажувати всі вимірювання якщо це не потрібно)
         return date.length == 100;
       });
       return {
@@ -166,7 +180,13 @@ export default {
       };
     },
 
+    // безпосередньо функція для побудови графіку надана відповідною бібліотекою
     async createChart() {
+      // отримуємо масиви з вимірами
+      // !!!!!!!
+      // потрібна оптимізація
+      // переписати код таким чином щоб функція отримувала лише потрібний їй в данимй момент масив в якості параметра
+      // !!!!!!!
       const {
         airTemperature,
         soilTemperature,
@@ -174,11 +194,14 @@ export default {
         humidity,
         date,
       } = await this.getMeas();
+
       let grapharea = document.getElementById("myChart").getContext("2d");
 
       let measForRender = [];
       let label = "";
 
+      // в залежності від обраного користувачем типу показника - створюється відповідний графік
+      // за замовчуванням це температупа повітря
       switch (this.selectedParameter) {
         case "airTemperature":
           measForRender = airTemperature;
@@ -207,6 +230,7 @@ export default {
         chartStatus.destroy();
       }
 
+      // створення нового екземпляру графіка
       new Chart(grapharea, {
         type: "line",
         data: {
@@ -229,6 +253,7 @@ export default {
       });
     },
 
+    // функція для підключення нового датчика
     async connectSensor({ userID, sensorID, sensorName }) {
       const form = {
         userID: userID,
@@ -236,7 +261,6 @@ export default {
         name: sensorName,
       };
       await sensorApi.connectSensor(form);
-      // console.log(await sensorApi.connectSensor(form));
     },
   },
 };
