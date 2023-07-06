@@ -260,7 +260,8 @@ export default {
         sensorID: sensorID,
         name: sensorName,
       };
-      await sensorApi.connectSensor(form);
+      // console.log(await sensorApi.connectDevice(form));
+      if (await sensorApi.connectDevice(form).data.success) console.log(123);
     },
   },
 };

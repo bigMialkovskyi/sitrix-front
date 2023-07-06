@@ -1,13 +1,12 @@
 <template>
   <!-- <section> -->
-    <!-- <div class="container"> -->
-    <div>
-      <div class="user-page"></div>
-      <Sensors />
-    </div>
+  <!-- <div class="container"> -->
+  <div>
+    <div class="user-page"></div>
+    <Sensors />
+  </div>
   <!-- </section> -->
 </template>
-
 
 <script>
 import store from "@/store";
