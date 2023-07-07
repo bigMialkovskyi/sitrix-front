@@ -19,7 +19,17 @@ const getMeasurements = async () => {
 
 const connectDevice = async (form) => {
 	try {
-		const response = await axios.post("/agro-gsm-sensor/connect/user", form);
+		const response = await axios.post("/agro-gsm-sensor/user/connect", form);
+		return response
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+
+const disconnectDevice = async (form) => {
+	try {
+		const response = await axios.post("/agro-gsm-sensor/user/disconnect", form);
 		return response
 	} catch (error) {
 		console.error(error);
@@ -28,7 +38,7 @@ const connectDevice = async (form) => {
 
 const getUser = async (form) => {
 	try {
-		const response = await axios.post("/agro-gsm-sensor/connect/user", form);
+		const response = await axios.post("/agro-gsm-sensor/user/connect", form);
 		return response
 	} catch (error) {
 		console.error(error);
@@ -38,5 +48,6 @@ const getUser = async (form) => {
 export const sensorApi = {
 	getMeasurements,
 	connectDevice,
+	disconnectDevice,
 	getUser
 };

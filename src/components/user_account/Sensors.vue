@@ -9,7 +9,7 @@
       >
         <p class="device-name">{{ device.name || 0 }}</p>
 
-        <div class="preview-bar">
+        <div @click.stop class="preview-bar">
           <div class="preview-element">
             <img
               class="preview-element-icon"
@@ -41,6 +41,13 @@
               alt="batery"
             />
             <p>{{ device.measurements[0].pressure || 0 }}</p>
+          </div>
+          <div @click.stop="disconnectSensor()" class="preview-element">
+            <img
+              class="preview-element-icon"
+              src="../../assets/img/trash.svg"
+              alt="batery"
+            />
           </div>
         </div>
       </li>
@@ -260,8 +267,19 @@ export default {
         sensorID: sensorID,
         name: sensorName,
       };
-      // console.log(await sensorApi.connectDevice(form));
-      if (await sensorApi.connectDevice(form).data.success) console.log(123);
+      console.log(await sensorApi.connectDevice(form).data);
+      // if (await sensorApi.connectDevice(form).data.success) console.log(123);
+    },
+
+    async disconnectSensor({ userID, sensorID, sensorName }) {
+      // const form = {
+      //   userID: userID,
+      //   sensorID: sensorID,
+      //   name: sensorName,
+      // };
+      console.log("ping");
+      // console.log(await sensorApi.connectDevice(form).data);
+      // if (await sensorApi.connectDevice(form).data.success) console.log(123);
     },
   },
 };
